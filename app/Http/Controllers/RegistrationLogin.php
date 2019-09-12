@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Registration;
 use Illuminate\Http\Request;
 
-class EditLogin extends Controller {
+class RegistrationLogin extends Controller {
 
 //------------------------------------------------------------------------------
 // Action Methods
@@ -13,7 +13,7 @@ class EditLogin extends Controller {
 
 	// Index --------------------------------------------------------------------
 	public function index() {
-		return view('edit_login');
+		return view('registration_login');
 	}
 
 	// Login --------------------------------------------------------------------
@@ -35,7 +35,7 @@ class EditLogin extends Controller {
 			'confirmation_num' => $request->confirmation_num,
 		];
 
-		return view('edit_login', $return_data);
+		return view('registration_login', $return_data);
 	}
 
 

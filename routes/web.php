@@ -4,8 +4,8 @@ Auth::routes();
 
 Route::get  ('/home', 'HomeController@index')->name('home');
 
-Route::get  ('/edit_login',                       'EditLogin@index');
-Route::post ('/edit_login',                       'EditLogin@login');
+Route::get  ('/registration_login',               'RegistrationLogin@index');
+Route::post ('/registration_login',               'RegistrationLogin@login');
 
 Route::get  ('/forgot',                           'ForgotConfNum@index');
 Route::post ('/forgot',                           'ForgotConfNum@CheckEmail');

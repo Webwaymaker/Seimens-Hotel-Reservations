@@ -16,7 +16,7 @@
 					</p>
 
 					<div class="text-right">
-						<a href="/edit_login">Return to Edit Registration</a>
+						<a href="/registration_login">Return to Edit Registration</a>
 					</div>
 				</div>					
 			</div>

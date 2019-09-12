@@ -40,7 +40,7 @@
 						</div>	
 					@endif
 
-					<form method="POST" action="/edit_login">
+					<form method="POST" action="/registration_login">
 						@csrf
 
 						<table class="w-100">

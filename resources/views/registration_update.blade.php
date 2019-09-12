@@ -4,30 +4,20 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-				<div class="text-right mb-2">
-					<a href="/registration_login">Click to modify or delete an existing Registration</a>
-				</div>
-				
 				<div class="card">
-					<div class="card-header">Hotel Registration</div>
+					<div class="card-header">Hotel Registration - Update</div>
 					<div class="card-body">
 					  <div class="alert alert-info">
 							<h3>Important</h3>
 							<ul>
 								<li>
-									For our Customers and Partners, please complete this form to
-									make hotel reservations. <u>You will receive a confirmation
-										email on the Thursday before your class beings</u>.
+									Registrations updates may not process if within 24 hours
+									of the registration's check in date. 									
 								</li>
 
 								<li>
-									If you are a Siemens BT or Siemens Canada employee,
-									<span style="font-weight: bold;">DO NOT</span> complete this form. Your
-									hotel reservations will automatically be made for you.
-								</li>
-
-								<li>
-									For questions, contact BT University at
+									If you have any questions or need assistance, contact 
+									BT University at ...<br />
 									<a href="mailto: btuniversity.i-bt@siemens.com">btuniversity.i-bt@siemens.com</a>.
 								</li>
 							</ul>
@@ -43,13 +33,25 @@
 							</div>
 						@endif
 
-						<form method="POST" action="/registration">
+						@if(old("invalid"))
+							<div class="alert alert-danger mb-4">
+								An error occurred while updating your registration please
+								contact ... <br> 								
+								<a href="mailto: btuniversity.i-bt@siemens.com">
+									btuniversity.i-bt@siemens.com
+								</a>
+								for assistance.
+							</div>	
+						@endif
+
+						<form method="POST" action="/registration/{{ $conf_num }}/{{ $id }}">
 							@csrf
+							@method("put")
 
 							@include('_registration_form')
 
 							<div class="text-right">
-								<button class="btn btn-primary" type="submit" name="btn_edit">Edit</button> 
+								<button class="btn btn-primary" type="submit" name="btn_update">Update</button> 
 							</div>
 						</form>
 					 </div>

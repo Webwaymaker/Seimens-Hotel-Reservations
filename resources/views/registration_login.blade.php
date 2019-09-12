@@ -16,6 +16,7 @@
 						&nbsp; If you do not remember you confirmation number please 
 						click  "Forgot Confirmation Number" to have it emailed to you.
 					</p>
+					
 					<p>
 						<strong>Note:</strong> Registrations may not be available to 
 						modify if it is within 24 hours of the registration's check in 

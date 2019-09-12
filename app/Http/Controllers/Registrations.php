@@ -17,14 +17,44 @@ class Registrations extends Controller {
 	}
 
 	// Show ---------------------------------------------------------------------
-	public function show($con_num, $id) {
-		dd($con_num);
-		dd($id);
+	public function show($conf_num, $id) {
+		$reg_data = $this->GetRegistrationData($conf_num, $id);
+		return view('registration_update', compact('reg_data', 'conf_num', 'id'));
 	}
 
 	// Store --------------------------------------------------------------------
 	public function store(Request $request) {
-		$valid = $request->validate([
+		$valid = $request->validate($this->GetFieldValidationArr());
+
+		$registration = new Registration;
+		$this->SaveRegistrationData($registration, $request);
+		
+		return view('registration_success', ['confirmation_num' => $registration->confirmation_num]);
+	}
+
+	// Update -------------------------------------------------------------------
+	public function Update(Request $request, $conf_num, $id) {
+		$valid = $request->validate($this->GetFieldValidationArr());
+
+		$registration = $this->GetRegistrationData($conf_num, $id);
+		if(!empty($registration)) {
+			$this->SaveRegistrationData($registration, $request, TRUE);
+		} else {
+			$request->request->add(['invalid' => TRUE]);  //Adds invalid into the request so withInputs picks it up
+			return back()->withInput();
+		}
+
+		return view('registration_update_success', ['confirmation_num' => $registration->confirmation_num]);
+	}
+
+
+//------------------------------------------------------------------------------
+// Action Methods
+//------------------------------------------------------------------------------
+
+	// Get Field Validation Array  ----------------------------------------------
+	private function GetFieldValidationArr() {
+		return [
 			'first_name'     => 'required|max:25',
 			'last_name'      => 'required|max:25',
 			'email'          => 'required|email|max:255',
@@ -35,10 +65,29 @@ class Registrations extends Controller {
 			'check_out_date' => 'required|date|after_or_equal:check_in_date',
 			'handicapped'    => 'nullable|integer',
 			'special_req'    => 'nullable|max:1000',
-		]);
+		];
+	}
 
-		$registration = new Registration;
-		$registration->confirmation_num = uniqid() . rand(100, 999);
+	// Get Registration Data ----------------------------------------------------
+	private function GetRegistrationData($conf_num, $id) {
+		$reg_data = Registration::where("id", $id)
+						-> where('confirmation_num', $conf_num)
+						-> limit(1)
+						-> get();
+
+		if(!empty($reg_data[0])) return $reg_data[0];
+
+		return false;
+	}
+
+	// Save Registration Data ---------------------------------------------------
+	private function SaveRegistrationData($registration, $request, $edit_record = FALSE) {
+		//Only add a Confirmation number if it is a new record
+		if($edit_record == FALSE) {
+			$registration->confirmation_num = uniqid() . rand(100, 999);
+		}
+
+		//Base data for add and Edit
 		$registration->first_name       = $request->first_name;
 		$registration->last_name        = $request->last_name;
 		$registration->email            = $request->email;
@@ -49,9 +98,8 @@ class Registrations extends Controller {
 		$registration->check_out_date   = date('Y-m-d H:i:s', strtotime($request->check_out_date));
 		$registration->special_req      = $request->special_req;
 		$registration->handicapped      = ($request->handicapped) ? 1 : 0;
-		$registration->save();
 		
-		return view('confirmation', ['confirmation_num' => $registration->confirmation_num]);
+		$registration->save();
 	}
 
-}
+} //End Of Class

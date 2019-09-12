@@ -16,18 +16,26 @@ class EditLogin extends Controller {
 		return view('edit_login');
 	}
 
-	// Store --------------------------------------------------------------------
-	public function store(Request $request) {
+	// Login --------------------------------------------------------------------
+	public function login(Request $request) {
 		$valid = $request->validate([
 			'email'            => 'required|email|max:255',
 			'confirmation_num' => 'required|alpha_num|max:20',
 		]);
 
+		//Validate credentials and redirect to edit page if valid
 		if($reg_id = $this->ValidLogin($request)) {
 			return redirect("/registration/" . $request->confirmation_num . "/" . $reg_id . "/edit");
 		} 
 
-		return view('edit_login', ['invalid' => TRUE]);
+		//Return to page and show errors
+		$return_data = [
+			'invalid'          => TRUE,
+			'email'            => $request->email,
+			'confirmation_num' => $request->confirmation_num,
+		];
+
+		return view('edit_login', $return_data);
 	}
 
 
@@ -35,6 +43,7 @@ class EditLogin extends Controller {
 // Private Methods
 //------------------------------------------------------------------------------
 
+	// Valid Login --------------------------------------------------------------
 	private function ValidLogin($request) {
 		$reg_data = Registration::select("id")
 					 ->where('email', $request->email)
@@ -50,5 +59,4 @@ class EditLogin extends Controller {
 		return false;
 	}
 
-
-}
+} //End of class

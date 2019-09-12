@@ -36,7 +36,7 @@
 						<div class="alert alert-danger mb-4">
 							The email and/or confirmation number you entered is not a 
 							match for a registration.  If you are unsure of your 
-							confirmation number please click the <a href="#">Here</a>
+							confirmation number please click the <a href="/forgot">Here</a>
 						</div>	
 					@endif
 
@@ -47,19 +47,21 @@
 							<tr>
 								<td width="30%">Registered Email</td>
 								<td width="70%">
-									<input class="form-control" type="text" name="email" value="{{ old('email') }}">
+									<input class="form-control" type="text" name="email" value="{{ old('email', (isset($email)) ? $email : '') }}">
 								</td>
 							</tr>
 							<tr>
 								<td>Confirmation Number</td>
 								<td>
-									<input class="form-control" type="text" name="confirmation_num" value="{{ old('confirmation_num') }}">								
+									<input class="form-control" type="text" name="confirmation_num" value="{{ old('confirmation_num', (isset($confirmation_num)) ? $confirmation_num : '') }}">								
 								</td>
 							</tr>
 							
 							<tr>
 								<td class="text-right" colspan="2">
-									<a href="#">Forgot Confirmation Number</a>
+									<div class="mt-2 mb-2">
+										<a href="/forgot">Forgot Confirmation Number</a>
+									</div>
 								</td>
 							</tr>
 

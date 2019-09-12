@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-				<div class="text-right">
-					<a href="#">Click to modify or delete an existing Registration</a>
+				<div class="text-right mb-2">
+					<a href="/edit_login">Click to modify or delete an existing Registration</a>
 				</div>
 				
 				<div class="card">

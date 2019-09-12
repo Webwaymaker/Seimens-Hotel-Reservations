@@ -2,7 +2,6 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -17,4 +16,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get  ('/home', 'HomeController@index')->name('home');
+
+
+Route::get  ('/edit_login',                       'EditLogin@index');
+Route::post ('/edit_login',                       'EditLogin@store');
+
+
+Route::get  ('/registration',                     'Registrations@index');
+Route::get  ('/registration/{con_num}/{id}/edit', 'Registrations@show');
+Route::post ('/registration',                     'Registrations@store');

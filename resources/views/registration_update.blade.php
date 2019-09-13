@@ -20,6 +20,15 @@
 									BT University at ...<br />
 									<a href="mailto: btuniversity.i-bt@siemens.com">btuniversity.i-bt@siemens.com</a>.
 								</li>
+
+								<li>
+									If youwould like to cancel your registration please click here
+									<form method="POST" action="/registration/{{ $conf_num }}/{{ $id }}/delete">
+										@csrf
+										@method("delete")
+										<button class="btn btn-danger mt-2" type="submit" name="btn_cancel">Cancel Registration</button> 
+									</form>
+								</li>
 							</ul>
 						</div>
 										  
@@ -33,17 +42,6 @@
 							</div>
 						@endif
 
-						@if(old("invalid"))
-							<div class="alert alert-danger mb-4">
-								An error occurred while updating your registration please
-								contact ... <br> 								
-								<a href="mailto: btuniversity.i-bt@siemens.com">
-									btuniversity.i-bt@siemens.com
-								</a>
-								for assistance.
-							</div>	
-						@endif
-
 						<form method="POST" action="/registration/{{ $conf_num }}/{{ $id }}">
 							@csrf
 							@method("put")
@@ -51,7 +49,7 @@
 							@include('_registration_form')
 
 							<div class="text-right">
-								<button class="btn btn-primary" type="submit" name="btn_update">Update</button> 
+								<button class="btn btn-primary" type="submit" name="btn_update">Update Registration</button> 
 							</div>
 						</form>
 					 </div>

@@ -28,8 +28,8 @@ class Registrations extends Controller {
 
 		$registration = new Registration;
 		$this->SaveRegistrationData($registration, $request);
-		
-		return view('registration_success', ['confirmation_num' => $registration->confirmation_num]);
+
+		return view('registration_success', compact('registration'));
 	}
 
 	// Update -------------------------------------------------------------------
@@ -40,16 +40,29 @@ class Registrations extends Controller {
 		if(!empty($registration)) {
 			$this->SaveRegistrationData($registration, $request, TRUE);
 		} else {
-			$request->request->add(['invalid' => TRUE]);  //Adds invalid into the request so withInputs picks it up
-			return back()->withInput();
+			return view('registration_update_error');
 		}
 
-		return view('registration_update_success', ['confirmation_num' => $registration->confirmation_num]);
+		return view('registration_update_success', compact('registration'));
+	}
+
+	// Destroy ------------------------------------------------------------------
+	public function destroy($conf_num, $id) {
+		$registration = $this->GetRegistrationData($conf_num, $id);
+		
+		if(!empty($registration)) {
+			$registration->canceled_at = date("Y-m-d H:i:s");
+			$registration->save();
+		} else {
+			return view('registration_cancel_error');
+		}
+
+		return view('registration_cancel_success', compact("registration"));
 	}
 
 
 //------------------------------------------------------------------------------
-// Action Methods
+// Private Methods
 //------------------------------------------------------------------------------
 
 	// Get Field Validation Array  ----------------------------------------------
@@ -72,6 +85,7 @@ class Registrations extends Controller {
 	private function GetRegistrationData($conf_num, $id) {
 		$reg_data = Registration::where("id", $id)
 						-> where('confirmation_num', $conf_num)
+						-> where('canceled_at', NULL)
 						-> limit(1)
 						-> get();
 

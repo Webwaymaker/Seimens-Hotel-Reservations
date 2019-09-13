@@ -49,7 +49,7 @@
 							@include('_registration_form')
 
 							<div class="text-right">
-								<button class="btn btn-primary" type="submit" name="btn_edit">Edit</button> 
+								<button class="btn btn-primary" type="submit" name="btn_edit">Register</button> 
 							</div>
 						</form>
 					 </div>

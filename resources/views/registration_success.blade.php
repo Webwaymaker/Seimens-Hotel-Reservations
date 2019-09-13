@@ -9,7 +9,6 @@
 
 				<div class="card-body">
 					<h3>Success</h3>
-
 					<p>
 						Your registration was successfully submitted.
 					</p>
@@ -19,7 +18,13 @@
 						class begins.
 					</p>
 					<p>
-						Your confirmation number is:  <strong>{{ $confirmation_num }}</strong>
+						Your confirmation number is:  <strong>{{ $registration->confirmation_num }}</strong>
+					</p>
+					<p>
+						If you would like to modify or cancel your registration please click 
+						<a href="/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit">
+							Here
+						</a>.	
 					</p>
 				</div>					
 			</div>

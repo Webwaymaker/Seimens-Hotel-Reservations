@@ -18,3 +18,5 @@ Route::delete ('/registration/{conf_num}/{id}/delete', 'Registrations@destroy');
 Route::get    ('/registration_login',                'RegistrationLogin@index');
 Route::post   ('/registration_login',                'RegistrationLogin@login');
 
+
+Route::get('laravel-send-email', 'EmailController@sendEMail');

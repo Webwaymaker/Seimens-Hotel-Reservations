@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegistrationConfMail;
 use App\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class Registrations extends Controller {
 
@@ -28,6 +30,8 @@ class Registrations extends Controller {
 
 		$registration = new Registration;
 		$this->SaveRegistrationData($registration, $request);
+
+		Mail::to($registration->email)->send(new RegistrationConfMail($registration));
 
 		return view('registration_success', compact('registration'));
 	}
@@ -115,5 +119,19 @@ class Registrations extends Controller {
 		
 		$registration->save();
 	}
+
+
+	// Send Registration Email --------------------------------------------------
+	public function SendRegistrationEmail(Request $request) {
+		Mail::to($request->email)->send(new RegistrationConfMail($request));
+	}
+
+
+
+
+
+
+
+
 
 } //End Of Class

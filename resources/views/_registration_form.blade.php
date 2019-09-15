@@ -28,7 +28,7 @@
 	<tr>
 		<td>Company Name</td>
 		<td>
-			<input class="form-control" type="text" name="branch" value="{{ old('branch', (isset($reg_data->branch)) ? $reg_data->branch : '') }}">
+			<input class="form-control" type="text" name="company_name" value="{{ old('company_name', (isset($reg_data->company_name)) ? $reg_data->company_name : '') }}">
 		</td>
 	</tr>
 	<tr>

@@ -25,7 +25,7 @@
 	</tr>
 	<tr>
 		<td>Company Name: </td>
-		<td>{{ $registration->branch }}</td>
+		<td>{{ $registration->company_name }}</td>
 	</tr>
 	<tr>
 		<td>Course Number: </td>

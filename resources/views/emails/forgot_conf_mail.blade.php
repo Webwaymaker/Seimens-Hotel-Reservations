@@ -22,7 +22,7 @@
 			</td>
 			<td>{{ $reg_conf["first_name"] }}</td>
 			<td>{{ $reg_conf["last_name"] }}</td>
-			<td>{{ $reg_conf["branch"] }}</td>
+			<td>{{ $reg_conf["company_name"] }}</td>
 			<td>{{ $reg_conf["course_num"] }}</td>
 			<td style="text-align: center;">{{ $reg_conf["check_in_date"] }}</td>
 			<td style="text-align: center;">{{ $reg_conf["check_out_date"] }}</td>

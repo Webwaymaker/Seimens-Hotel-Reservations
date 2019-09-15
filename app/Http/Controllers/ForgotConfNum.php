@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotConfMail;
 use App\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class ForgotConfNum extends Controller {
 
@@ -22,9 +25,9 @@ class ForgotConfNum extends Controller {
 			'email' => 'required|email|max:255',
 		]);
 
-		//Validate email and redirect to edit page if valid
-		if($conf_num_arr = $this->ValidEmail($request)) {
-//TODO: We need to send email here
+		//Validate email, send  forgot email and redirect to edit page if valid 
+		if($reg_conf_arr = $this->ValidEmail($request)) {
+			Mail::to($request->email)->send(new ForgotConfMail($reg_conf_arr));
 			return view("forgot_conf_num_success", ["email" => $request->email]);
 		} 
 
@@ -44,15 +47,14 @@ class ForgotConfNum extends Controller {
 
 	// Valid Email --------------------------------------------------------------
 	private function ValidEmail($request) {
-		$reg_data = Registration::select("confirmation_num")
-					 ->where('email', $request->email)
-					 ->get()
-					 ->toArray();
+		$reg_conf_arr = Registration::where('email', $request->email)
+							->where('canceled_at', NULL)
+							->orderBy('created_at', 'desc')
+				 			->get()
+				 			->toArray();
 
-		if(!empty($reg_data)) {
-			return $reg_data;
-		}
-
+		if(!empty($reg_conf_arr)) return $reg_conf_arr;
+		
 		return false;
 	}
 

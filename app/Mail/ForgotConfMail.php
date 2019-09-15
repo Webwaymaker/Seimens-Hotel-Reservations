@@ -7,22 +7,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RegistrationConfMail extends Mailable {
+class ForgotConfMail extends Mailable {
 	 
 	use Queueable, SerializesModels;
 
+	public $reg_conf_arr;
 
-	public $registration;
-
-
-	public function __construct($registration) {
-		$this->registration = $registration;
+	public function __construct($reg_conf_arr) {
+		$this->reg_conf_arr = $reg_conf_arr;
 	}
 
 	public function build() {
 		return $this->from("dev@webwaymaker.com")
-						->subject("Siemens Registration Confirmation")
-						->view("emails.registration_conf_mail");
+						->subject("Siemens - Registration Confirmation Numbers")
+						->view("emails.forgot_conf_mail");
 	}
 
 }  //End of class

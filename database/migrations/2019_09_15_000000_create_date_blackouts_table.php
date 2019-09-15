@@ -10,9 +10,9 @@ class CreateDateBlackoutsTable extends Migration {
 	public function up() {
 		Schema::create('date_blackouts', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->timestamp('active_date');
-			$table->timestamp('start_date');
-			$table->timestamp('end_date');
+			$table->timestamp('active_at')->nullable();
+			$table->timestamp('start_at')->nullable();
+			$table->timestamp('end_at')->nullable();
 			$table->text('description');
 			$table->timestamps();
 		});

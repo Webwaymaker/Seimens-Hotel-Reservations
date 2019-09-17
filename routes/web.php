@@ -3,6 +3,8 @@
 Auth::routes();
 
 Route::get    ('/admin',                               'Admin@index');
+Route::post   ('/admin/add/admin',                     'Admin@addAdmin');
+Route::post   ('/admin/add/report_to',                 'Admin@addReportTo');
 
 Route::get    ('/forgot',                              'ForgotConfNum@index');
 Route::post   ('/forgot',                              'ForgotConfNum@CheckEmail');

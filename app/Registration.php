@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Registration extends Model {
+class registration extends Model {
 
 //------------------------------------------------------------------------------
 // Properties
 //------------------------------------------------------------------------------
 
-	protected $guarded    = [];
+	protected $guarded = [];
 
 
 //------------------------------------------------------------------------------

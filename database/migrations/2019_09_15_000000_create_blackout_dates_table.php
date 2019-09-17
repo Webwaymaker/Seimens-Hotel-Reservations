@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDateBlackoutsTable extends Migration {
+class CreateBlackoutDatesTable extends Migration {
 	
 	// Up -----------------------------------------------------------------------
 	public function up() {
-		Schema::create('date_blackouts', function (Blueprint $table) {
+		Schema::create('blackout_dates', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->timestamp('active_at')->nullable();
 			$table->timestamp('start_at')->nullable();
@@ -20,7 +20,7 @@ class CreateDateBlackoutsTable extends Migration {
 
 	// Down ---------------------------------------------------------------------
    public function down() {
-		Schema::dropIfExists('date_blackouts');
+		Schema::dropIfExists('blackout_dates');
 	}
 }
 

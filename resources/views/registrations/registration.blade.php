@@ -17,7 +17,7 @@
 								<li>
 									For our Customers and Partners, please complete this form to
 									make hotel reservations. <u>You will receive a confirmation
-										email on the Thursday before your class beings</u>.
+									email on the Thursday before your class beings</u>.
 								</li>
 
 								<li>
@@ -46,7 +46,7 @@
 						<form method="POST" action="/registration">
 							@csrf
 
-							@include('_registration_form')
+							@include('registrations.partials._registration_form')
 
 							<div class="text-right">
 								<button class="btn btn-primary" type="submit" name="btn_edit">Register</button> 

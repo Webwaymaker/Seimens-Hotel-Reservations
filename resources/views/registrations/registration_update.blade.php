@@ -46,7 +46,7 @@
 							@csrf
 							@method("put")
 
-							@include('_registration_form')
+							@include('registrations.partials._registration_form')
 
 							<div class="text-right">
 								<button class="btn btn-primary" type="submit" name="btn_update">Update Registration</button> 

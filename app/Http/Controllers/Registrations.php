@@ -15,13 +15,13 @@ class Registrations extends Controller {
 
 	// Index --------------------------------------------------------------------
 	public function index() {
-		return view('registration');
+		return view('registrations.registration');
 	}
 
 	// Show ---------------------------------------------------------------------
 	public function show($conf_num, $id) {
 		$reg_data = $this->GetRegistrationData($conf_num, $id);
-		return view('registration_update', compact('reg_data', 'conf_num', 'id'));
+		return view('registrations.update', compact('reg_data', 'conf_num', 'id'));
 	}
 
 	// Store --------------------------------------------------------------------
@@ -33,7 +33,7 @@ class Registrations extends Controller {
 
 		Mail::to($registration->email)->send(new RegistrationConfMail($registration));
 
-		return view('registration_success', compact('registration'));
+		return view('registrations.success', compact('registration'));
 	}
 
 	// Update -------------------------------------------------------------------
@@ -44,10 +44,10 @@ class Registrations extends Controller {
 		if(!empty($registration)) {
 			$this->SaveRegistrationData($registration, $request, TRUE);
 		} else {
-			return view('registration_update_error');
+			return view('registrations.update_error');
 		}
 
-		return view('registration_update_success', compact('registration'));
+		return view('registrations.update_success', compact('registration'));
 	}
 
 	// Destroy ------------------------------------------------------------------
@@ -58,10 +58,10 @@ class Registrations extends Controller {
 			$registration->canceled_at = date("Y-m-d H:i:s");
 			$registration->save();
 		} else {
-			return view('registration_cancel_error');
+			return view('registrations.cancel_error');
 		}
 
-		return view('registration_cancel_success', compact("registration"));
+		return view('registrations.cancel_success', compact("registration"));
 	}
 
 

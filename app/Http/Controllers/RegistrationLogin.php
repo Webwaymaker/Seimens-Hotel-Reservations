@@ -13,7 +13,7 @@ class RegistrationLogin extends Controller {
 
 	// Index --------------------------------------------------------------------
 	public function index() {
-		return view('registration_login');
+		return view('registrations.login');
 	}
 
 	// Login --------------------------------------------------------------------
@@ -35,7 +35,7 @@ class RegistrationLogin extends Controller {
 			'confirmation_num' => $request->confirmation_num,
 		];
 
-		return view('registration_login', $return_data);
+		return view('registrations.login', $return_data);
 	}
 
 

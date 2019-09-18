@@ -16,7 +16,7 @@ class ForgotConfNum extends Controller {
 
 	// Index --------------------------------------------------------------------
 	public function index() {
-		return view('forgot_conf_num');
+		return view('registrations.forgot_conf_num');
 	}
 
 	// Check Email --------------------------------------------------------------
@@ -28,7 +28,7 @@ class ForgotConfNum extends Controller {
 		//Validate email, send  forgot email and redirect to edit page if valid 
 		if($reg_conf_arr = $this->ValidEmail($request)) {
 			Mail::to($request->email)->send(new ForgotConfMail($reg_conf_arr));
-			return view("forgot_conf_num_success", ["email" => $request->email]);
+			return view("registrations.forgot_conf_num_success", ["email" => $request->email]);
 		} 
 
 		//Return to page and show errors
@@ -37,7 +37,7 @@ class ForgotConfNum extends Controller {
 			'email'   => $request->email,
 		];
 
-		return view('forgot_conf_num', $return_data);
+		return view('registrations.forgot_conf_num', $return_data);
 	}
 
 

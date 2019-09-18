@@ -6,19 +6,12 @@ use App\Blackout_date;
 use App\Registration;
 use App\Report_to;
 use App\User;
+use App\Mail\AdminPasswordSetMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class Admin extends Controller {
-
-
-//------------------------------------------------------------------------------
-// Contructor
-//------------------------------------------------------------------------------
-
-	public function __construct() {
-		$this->middleware('auth');
-	}
-
 
 //------------------------------------------------------------------------------
 // Action Methods
@@ -31,10 +24,7 @@ class Admin extends Controller {
 		$blackout_dates = Blackout_date::all();
 		$registrations  = Registration::all();
 
-		return view('admin', compact('users', 'report_tos', 'blackout_dates', 'registrations'));
+		return view('admin.admin', compact('users', 'report_tos', 'blackout_dates', 'registrations'));
 	}
-
-
-
 
 }  //End of Class

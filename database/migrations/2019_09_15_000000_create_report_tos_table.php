@@ -11,7 +11,6 @@ class CreateReportTosTable extends Migration {
 		Schema::create('report_tos', function (Blueprint $table) {
 			$table->bigIncrements('id');
 			$table->string('email');
-			$table->string('status')->default('active');
 			$table->timestamps();
 		});
 	}

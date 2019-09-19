@@ -5,6 +5,12 @@
 	<div class="row justify-content-center">
 		<div class="col-md-8">
 			
+			@if (session('status'))
+				<div class="alert alert-success" role="alert">
+					{{ session('status') }}
+				</div>
+			@endif
+
 			<div class="card mb-4">
 				<div class="card-header">Admins</div>
 				<div class="card-body">
@@ -13,9 +19,9 @@
 							<tr>
 								<td>{{ $user->name }}</td>
 								<td class="text-right">
-									<a href="">X</a>
+									<a href="/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset">R</a>
 									&nbsp;
-									<a href="">R</a>
+									<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">X</a>
 								</td>
 							</tr>
 						@endforeach	
@@ -63,7 +69,7 @@
 							<tr>
 								<td>{{ $report_to->email }}</td>
 								<td class="text-right">
-									<a href="">X</a>
+									<a href="/admin/report_to/{{ $report_to->access_token }}/{{ $report_to->id }}/delete">X</a>
 								</td>
 							</tr>
 						@endforeach	
@@ -95,8 +101,6 @@
 				</div>					
 			</div>
 	
-
-
 		</div>
 	</div>
 </div> 

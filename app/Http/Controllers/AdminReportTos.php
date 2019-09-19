@@ -11,6 +11,21 @@ class AdminReportTos extends Controller {
 // Action Methods
 //------------------------------------------------------------------------------
 
+	// Destroy ------------------------------------------------------------------
+	public function destroy($token, $id) {
+		$report_to = Report_to::where('id', $id)
+						          ->where('created_at', date("Y-m-d H:i:s", $token))
+						          ->get();
+
+		if(empty($report_to[0])) {
+			return redirect(404);
+		}
+
+		Report_to::destroy($id);
+
+		return back()->with('status', 'The reporting email address ' . $report_to[0]->email . ' has been deleted.');;
+	}
+
 	// Store --------------------------------------------------------------------
 	public function store(Request $request) {
 		$valid = $request->validate([
@@ -20,6 +35,8 @@ class AdminReportTos extends Controller {
 		$report_to = new Report_to;
 		$report_to->email = $request->report_to_email;
 		$report_to->save();
+
+		return back()->with('status', $report_to->email . ' has been added as a new Report-to.');
 	}
 
 

@@ -8,16 +8,12 @@
 				<div class="card-header">Administrator Account</div>
 
 				<div class="card-body">
-					<h3>Administrator Account Password Setup</h3>
+					<h3>Administrator Account Password Reset</h3>
 
 					<p>
-						You have just been added to the Siemen's Hotel Registration 
-						system as a site Administrator.
+						To reset you password for the Siemen's Hotel Registration system
+						Please enter a new and matching confirmation Password. 
 					</p> 
-
-					<p>
-						To finalize your activation please create a password.						
-					</p>
 
 					@if ($errors->any())
 						<div class="alert alert-danger mb-4">
@@ -50,7 +46,7 @@
 							</tr>
 							<tr>
 								<td class="text-right" colspan="2">
-									<small>Your passord must be between 10 and 20 characters in length.</small>
+									<small>Your new passord must be between 10 and 20 characters in length.</small>
 								</td>
 							</tr>
 							<tr>

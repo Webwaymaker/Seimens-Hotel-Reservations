@@ -7,13 +7,17 @@ Route::middleware(['auth'])->group(function () {
 	Route::get    ('/admin',                                  'Admin@index');
 	Route::post   ('/admin/add/admin',                        'AdminUsers@store');
 	Route::post   ('/admin/add/report_to',                    'AdminReportTos@store');
-	Route::get    ('/admin/delete/admin/{conf_num}/{id}',     'Admin@deleteAdmin');
-	Route::get    ('/admin/delete/report_to/{conf_num}/{id}', 'Admin@deleteReportTo');
-	Route::get    ('/admin/reset/admin/{conf_num}/{id}',      'Admin@resetAdmin');
+	Route::get    ('/admin/{token}/{id}/delete',              'AdminUsers@destroy');
+	Route::get    ('/admin/report_to/{token}/{id}/delete',    'AdminReportTos@destroy');
+	Route::get    ('/admin/password/{token}/{id}/reset',      'AdminUsers@update');
 });
 
-Route::post   ('/admin/set',                              'AdminPasswords@update');
-Route::get    ('/admin/set/{conf_num}/{id}',              'AdminPasswords@show');
+
+
+Route::post   ('/admin/reset',                               'AdminPasswords@update');
+Route::get    ('/admin/reset/{time}/{token}/{id}',           'AdminPasswords@show'); 
+Route::post   ('/admin/set',                                 'AdminPasswords@update');
+Route::get    ('/admin/set/{conf_num}/{id}',                 'AdminPasswords@index');
 
 
 

@@ -76,7 +76,7 @@ class Registrations extends Controller {
 			'last_name'      => 'required|max:25',
 			'email'          => 'required|email|max:255',
 			'mobile_num'     => 'required|alpha_num|max:20',
-			'company_name'   => 'required|max:50',
+			'location'       => 'required|max:50',
 			'course_num'     => 'required|alpha_num|max:25',
 			'check_in_date'  => 'required|date',
 			'check_out_date' => 'required|date|after_or_equal:check_in_date',
@@ -111,7 +111,7 @@ class Registrations extends Controller {
 		$registration->email            = $request->email;
 		$registration->mobile_num       = $request->mobile_num;
 		$registration->course_num       = $request->course_num;
-		$registration->company_name     = $request->company_name;
+		$registration->location         = $request->location;
 		$registration->check_in_date    = date('Y-m-d H:i:s', strtotime($request->check_in_date));
 		$registration->check_out_date   = date('Y-m-d H:i:s', strtotime($request->check_out_date));
 		$registration->special_req      = $request->special_req;

@@ -41,7 +41,7 @@ class AdminBlackouts extends Controller {
 		$blackout = new Blackout_date;
 		$blackout->start_at    = $start_date;
 		$blackout->end_at      = $end_date;
-		$blackout->activate_at = $activate_date;
+		$blackout->active_at   = $activate_date;
 		$blackout->description = $request->description;
 		$blackout->save();
 

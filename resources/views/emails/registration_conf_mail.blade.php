@@ -24,8 +24,8 @@
 		<td>{{ $registration->mobile_num }}</td>
 	</tr>
 	<tr>
-		<td>Company Name: </td>
-		<td>{{ $registration->company_name }}</td>
+		<td>Location: </td>
+		<td>{{ $registration->location }}</td>
 	</tr>
 	<tr>
 		<td>Course Number: </td>

@@ -18,18 +18,33 @@ class Admin extends Controller {
 //------------------------------------------------------------------------------
 
 	// Index --------------------------------------------------------------------
-	public function index() {
+	public function index($display = "administrators") {
 
-		$users          = User::all();
-		$report_tos     = Report_to::all();
-		
-		$blackout_dates = Blackout_date::where('end_at', ">=", date("Y-m-d H:i:s"))
-												 ->orderBy("start_at", "asc")
-												 ->get();
-												 
-		$registrations  = Registration::all();
+		switch($display) {
+			case "registrations":
+				$registrations = Registration::orderBy("check_in_date", "desc")->paginate(25);
+				$view_data = compact("display", "registrations");       
+				break;
+				 
+			case "administrators":
+				$users = User::all();
+				$view_data = compact("display", "users");       
+				break;
 
-		return view('admin.admin', compact('users', 'report_tos', 'blackout_dates', 'registrations'));
+			case "report_tos":
+				$report_tos = Report_to::all();
+				$view_data = compact("display", "report_tos");       
+				break;
+
+			case "blackouts":
+				$blackout_dates = Blackout_date::where('end_at', ">=", date("Y-m-d H:i:s"))
+														 ->orderBy("start_at", "asc")
+														 ->get();
+				$view_data = compact("display", "blackout_dates");       
+				break;
+		}
+
+		return view('admin.admin', $view_data);
 	}
 
 }  //End of Class

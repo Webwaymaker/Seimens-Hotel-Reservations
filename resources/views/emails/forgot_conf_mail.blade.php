@@ -7,7 +7,7 @@
 		<th style="padding: 5px; background-color: black; color: white;">Confirmation Number</th>
 		<th style="padding: 5px; background-color: black; color: white;">First Name</th>
 		<th style="padding: 5px; background-color: black; color: white;">Last Name</th>
-		<th style="padding: 5px; background-color: black; color: white;">Company</th>
+		<th style="padding: 5px; background-color: black; color: white;">Location</th>
 		<th style="padding: 5px; background-color: black; color: white;">Course</th>
 		<th style="padding: 5px; background-color: black; color: white;">Check In Date</th>
 		<th style="padding: 5px; background-color: black; color: white;">Check Out Date</th>
@@ -22,7 +22,7 @@
 			</td>
 			<td>{{ $reg_conf["first_name"] }}</td>
 			<td>{{ $reg_conf["last_name"] }}</td>
-			<td>{{ $reg_conf["company_name"] }}</td>
+			<td>{{ $reg_conf["location"] }}</td>
 			<td>{{ $reg_conf["course_num"] }}</td>
 			<td style="text-align: center;">{{ $reg_conf["check_in_date"] }}</td>
 			<td style="text-align: center;">{{ $reg_conf["check_out_date"] }}</td>

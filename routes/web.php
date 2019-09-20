@@ -5,6 +5,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 	Route::get    ('/admin',                                  'Admin@index');
+	Route::get    ('/admin/display/{display}',                'Admin@index');
 	Route::post   ('/admin/add/admin',                        'AdminUsers@store');
 	Route::post   ('/admin/add/report_to',                    'AdminReportTos@store');
 	Route::get    ('/admin/{token}/{id}/delete',              'AdminUsers@destroy');

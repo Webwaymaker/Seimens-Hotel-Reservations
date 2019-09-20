@@ -15,7 +15,7 @@ class CreateRegistrationsTable extends Migration {
 			$table->string('last_name', 25);
 			$table->string('email', 255);
 			$table->string('mobile_num', 20);
-			$table->string('company_name', 50);
+			$table->string('location', 50);
 			$table->string('course_num', 25);
 			$table->timestamp('check_in_date')->nullable();
 			$table->timestamp('check_out_date')->nullable();

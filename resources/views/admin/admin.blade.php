@@ -11,8 +11,36 @@
 				</div>
 			@endif
 
+			@if (session('conflicts'))
+				<div class="alert alert-danger" role="alert">
+					<h3>Registration Conflicts</h3>
+					
+					<p>
+						Bellow is a list of current pending registrations that conflict
+						with your new Blackout.
+					</p>
+
+					<table class="w-100">
+						<tr>
+							<th class="w-25">Registration Under</th>
+							<th class="w-25 text-center">Confirmation #</th>
+							<th class="w-25 text-center">Check In Date</th>
+							<th class="w-25 text-center">Check Out Date</th>
+						</tr>
+						@foreach(session('conflicts') as $conflict)
+							<tr>
+								<td>{{ $conflict->first_name . " " . $conflict->last_name }}</td>
+								<td class="text-center">{{ $conflict->confirmation_num }}</td>
+								<td class="text-center">{{ $conflict->check_in_date }}</td>
+								<td class="text-center">{{ $conflict->check_out_date }}</td>
+							</tr>
+						@endforeach
+					</table>
+				</div>
+			@endif
+
 			<div class="card mb-4">
-				<div class="card-header">Admins</div>
+				<div class="card-header">Adminstrators</div>
 				<div class="card-body">
 					<table class="w-100 mb-3">
 						@foreach($users as $user)
@@ -96,6 +124,85 @@
 									<button class="btn btn-primary" type="submit">Add</button>
 								</div>
 							</div>
+						</form>
+					</div>
+				</div>					
+			</div>
+	
+
+			<div class="card mb-4">
+				<div class="card-header">Blackout Dates</div>
+				<div class="card-body">
+					<table class="w-100 mb-3">
+						<tr>
+							<th class="w-50">Description</th>
+							<th class="text-center">Activate Date</th>
+							<th class="text-center">Start Date</th>
+							<th class="text-center">End Date</th>
+							<th>&nbsp;</th>
+						</tr>
+						@foreach($blackout_dates as $blackout)
+							<tr>
+								<td>{{ $blackout->description }}</td>
+								<td class="text-center">{{ $blackout->activate_at }}</td>
+								<td class="text-center">{{ $blackout->start_at }}</td>
+								<td class="text-center">{{ $blackout->end_at }}</td>
+								<td class="text-right">
+									<a href="/admin/blackout/{{ $blackout->access_token }}/{{ $blackout->id }}/delete">X</a>
+								</td>
+							</tr>
+						@endforeach	
+					</table>
+					<hr>
+					<div>
+						<h5>Add A New Blackout</h5>
+						<p>
+							<small>
+								To set a new Blackout provide the activation date.&nbsp; 
+								The date that you would blackout would be displayed.&nbsp;
+								Set the start and end date of the Blackout.&nbsp; Then 
+								give the Blackout a descriptor that the customer will see 
+								so they can understand why the dates are not available.
+							</small>
+						</p>
+						<form method="post" action="/admin/blackout">
+							@csrf
+							<input type="hidden" name="current_date" value="{{ date("m/d/Y") }}" />
+							<div class="row mb-3">
+								<div class="col-4">
+									<input class="form-control @error('activate_date') is-invalid @enderror" type="text" name="activate_date" value="{{ old("activate_date") }}" placeholder="Activation Date">
+									@error('activate_date')
+										<small class="text-danger">{{ $message }}</small>
+									@enderror
+								</div>
+
+								<div class="col-4">
+									<input class="form-control @error('start_date') is-invalid @enderror" type="text" name="start_date" value="{{ old("start_date") }}" placeholder="Blackout Start Date">
+									@error('start_date')
+										<small class="text-danger">{{ $message }}</small>
+									@enderror
+								</div>
+
+								<div class="col-4">
+									<input class="form-control @error('end_date') is-invalid @enderror" type="text" name="end_date" value="{{ old("end_date") }}" placeholder="Blackout End Date">
+									@error('end_date')
+										<small class="text-danger">{{ $message }}</small>
+									@enderror
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col">
+									<input class="form-control @error('description') is-invalid @enderror" type="text" name="description" value="{{ old("description") }}" placeholder="Blackout Description">
+									@error('description')
+										<small class="text-danger">{{ $message }}</small>
+									@enderror
+								</div>
+								<div class="col-auto">
+									<button class="btn btn-primary" type="submit">Add</button>
+								</div>
+							</div>
+
 						</form>
 					</div>
 				</div>					

@@ -10,8 +10,9 @@ class report_to extends Model {
 // Accessors
 //------------------------------------------------------------------------------
 
+	//Get Access Toekn Attribute ------------------------------------------------
 	public function getAccessTokenAttribute() {
-		return strtotime($this->created_at);
+		return \App\Logic\access_token::makeToken($this->created_at);
 	} 
 
 

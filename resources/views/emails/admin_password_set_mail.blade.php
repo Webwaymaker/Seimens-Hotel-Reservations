@@ -12,7 +12,7 @@
 	<li>Your user name is the email address that was used to register you: {{ $admin->email }}</li>
 	<li>
 		To finalize your activation please 
-		<a href="http://ccreg.webwaymaker.com/admin/set/{{ strtotime($admin->created_at) }}/{{ $admin->id }}">
+		<a href="http://ccreg.webwaymaker.com/admin/set/{{ $admin->access_token }}/{{ $admin->id }}">
 			click here to set your password
 		</a>
 	</li>

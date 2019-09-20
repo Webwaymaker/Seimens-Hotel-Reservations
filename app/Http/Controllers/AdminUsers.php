@@ -17,13 +17,11 @@ class AdminUsers extends Controller {
 
 	// Destroy ------------------------------------------------------------------
 	public function destroy($token, $id) {
-		$admin = User::where('id', $id)
-						 ->where('created_at', date("Y-m-d H:i:s", $token))
-						 ->get();
+		$admin = User::where('id', $id)->get();
+		if(empty($admin[0])) return redirect(404);
 
-		if(empty($admin[0])) {
-			return redirect(404);
-		}
+		$valid_token = \App\Logic\Access_token::validateToken($admin[0]->created_at, $token);
+		if($valid_token == FALSE) return redirect(404);
 
 		User::destroy($id);
 
@@ -33,13 +31,11 @@ class AdminUsers extends Controller {
 
 	// Update (Reset Admin Password) --------------------------------------------
 	public function update($token, $id) {
-		$admin = User::where('id', $id)
-						 ->where('created_at', date("Y-m-d H:i:s", $token))
-						 ->get();
+		$admin = User::where('id', $id)->get();
+		if(empty($admin[0])) return redirect(404);
 
-		if(empty($admin[0])) {
-			return redirect(404);
-		}
+		$valid_token = \App\Logic\Access_token::validateToken($admin[0]->created_at, $token);
+		if($valid_token == FALSE) return redirect(404);
 
 		$admin = $admin[0];
 		

@@ -15,17 +15,15 @@ class AdminPasswords extends Controller {
 	// show ---------------------------------------------------------------------
 	// Show reset password
 	public function show($time, $token, $id) {
+		$admin = User::where('id', $id)->get();
+		if(empty($admin[0])) return redirect(404);
+
+		$valid_token = \App\Logic\Access_token::validateToken($admin[0]->created_at, $token);
+		if($valid_token == FALSE) return redirect(404);
+
 		//Check If Expiered (User has 60 minutes to respond)
 		if($time + 3600 < time()) {
 			return redirect(410);  //410 = HTTP Response "Gone" -> https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410
-		}
-
-		$admin = User::where('id', $id)
-						 ->where('created_at', date("Y-m-d H:i:s", $token))
-						 ->get();
-
-		if(empty($admin[0])) {
-			return redirect(404);
 		}
 
 		$admin = $admin[0];
@@ -35,17 +33,13 @@ class AdminPasswords extends Controller {
 
 	// Index --------------------------------------------------------------------
 	// Show Set Initial Password  
-	public function index($conf_num,  $id) {
-		//Get admin data from Conf_num and id
-		$admin = User::where('id' , $id)
-						 ->where('created_at', date("Y-m-d H:i:s", $conf_num))
-						 ->get();
+	public function index($token,  $id) {
+		$admin = User::where('id' , $id)->get();
+		if(empty($admin[0])) return redirect(404);
 
-		//If the admin does not exist show 404
-		if(empty($admin[0])) {
-			return redirect(404);
-		}
- 
+		$valid_token = \App\Logic\Access_token::validateToken($admin[0]->created_at, $token);
+		if($valid_token == FALSE) return redirect(404);
+		
 		$admin = $admin[0];
 		return view("admin.set_password", compact('admin'));
 	}
@@ -57,13 +51,11 @@ class AdminPasswords extends Controller {
 			'conf_password' => 'same:new_password',
 		]);
 
-		$admin = User::where('id', $request->id)
-						 ->where('created_at', date('Y-m-d H:i:s', $request->access_token))
-						 ->get();
+		$admin = User::where('id', $request->id)->get();
+		if(empty($admin[0])) return redirect(404);
 
-		if(empty($admin[0])) {
-			return redirect(404);
-		}
+		$valid_token = \App\Logic\Access_token::validateToken($admin[0]->created_at, $request->access_token);
+		if($valid_token == FALSE) return redirect(404);
 
 		$admin = $admin[0];
 		$admin->password = bcrypt($request->new_password);

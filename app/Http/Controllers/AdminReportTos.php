@@ -13,13 +13,11 @@ class AdminReportTos extends Controller {
 
 	// Destroy ------------------------------------------------------------------
 	public function destroy($token, $id) {
-		$report_to = Report_to::where('id', $id)
-						          ->where('created_at', date("Y-m-d H:i:s", $token))
-						          ->get();
+		$report_to = Report_to::where('id', $id)->get();
+		if(empty($report_to[0])) return redirect(404);
 
-		if(empty($report_to[0])) {
-			return redirect(404);
-		}
+		$valid_token = \App\Logic\Access_token::validateToken($report_to[0]->created_at, $token);
+		if($valid_token == FALSE) return redirect(404);
 
 		Report_to::destroy($id);
 

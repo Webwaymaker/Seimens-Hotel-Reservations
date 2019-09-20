@@ -15,34 +15,45 @@
 			To search the Registration List please enter your search criteria below 
 			- Name, Check In Date and/or Check Out Date.
 		</p>
-		<form method="post" action="/admin/add/report_to">
+		<form method="POST" action="/admin/display/registrations">
 			@csrf
-			<div class="row">
-
-
-				<div class="col-4">
-					<input class="form-control @error('search_name') is-invalid @enderror" type="text" name="search_name" value="{{ old("search_name") }}" placeholder="Shearch Name">
-					@error('search_name')
+			<div class="row  mb-3">
+				<div class="col-5">
+					<input class="form-control @error('search_first_name') is-invalid @enderror" type="text" name="search_first_name" value="{{ old("search_first_name", $search["first_name"]) }}" placeholder="Search First Name">
+					@error('search_first_name')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 
-				<div class="col-3">
-					<input class="form-control @error('search_check_in') is-invalid @enderror" type="text" name="search_check_in" value="{{ old("search_check_in") }}" placeholder="Search Check In">
+				<div class="col-5">
+					<input class="form-control @error('search_last_name') is-invalid @enderror" type="text" name="search_last_name" value="{{ old("search_last_name", $search["last_name"]) }}" placeholder="Search Last Name">
+					@error('search_last_name')
+						<small class="text-danger">{{ $message }}</small>
+					@enderror
+				</div>
+
+				<div class="col-auto">
+					<button class="btn btn-primary" style="width: 100px;" type="submit">Search</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-5">
+					<input class="form-control @error('search_check_in') is-invalid @enderror" type="text" name="search_check_in" value="{{ old("search_check_in", $search["check_in"]) }}" placeholder="Search Check In Date">
 					@error('search_check_in')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 
-				<div class="col-3">
-					<input class="form-control @error('search_check_out') is-invalid @enderror" type="text" name="search_check_out" value="{{ old("search_check_out") }}" placeholder="Search Check Out">
+				<div class="col-5">
+					<input class="form-control @error('search_check_out') is-invalid @enderror" type="text" name="search_check_out" value="{{ old("search_check_out", $search["check_out"]) }}" placeholder="Search Check Out Date">
 					@error('search_check_out')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 		
 				<div class="col-auto">
-					<button class="btn btn-primary" type="submit">Search</button>
+					<a class="btn btn-success" style="width: 100px;" href="/admin/display/registrations">Reset</a>
 				</div>
 			</div>
 		</form>
@@ -50,8 +61,16 @@
 </div>
 
 
-<div class="card mb-4">
-	<div class="card-header">Registration List</div>
+<div class="card mb-3">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-6">Registration List</div>
+			<div class="col-6 text-right">
+				Showing {{ $registrations->firstItem() }} - {{ $registrations->lastItem() }}
+				of {{ $registrations->total() }}
+			</div>
+		</div>
+	</div>
 	<div class="card-body">
 		<table class="w-100">
 			<tr>
@@ -85,6 +104,11 @@
 		</table>
 	</div>
 </div>
+
+<div class="d-flex justify-content-end mb-4">
+	{{ $registrations->onEachSide(2)->links() }}
+</div>
+
 
 
 <div class="card mb-4">

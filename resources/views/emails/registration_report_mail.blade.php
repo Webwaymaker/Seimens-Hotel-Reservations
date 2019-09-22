@@ -1,39 +1,54 @@
-<h2>Siemens Training Registration Report</h2>
+<h2>@if($custom) Custom @endif Siemens Training Registration Report</h2>
 
 <p>Hello,</p>
 
 @if(empty($registrations))
 	<p>An attempt was made to run the Siemens Training Registration Report but...</p>
-	<p><strong>There are new registrations to report for this day.</strong></p>
+	<p><strong>There are no new registrations to report for this day.</strong></p>
 
 @else 
 	<p>
-		Below and attached you will find a Siemens Training Registration Report.&nbsp;
-		You can click on a registrants name below to see more details about the 
-		registration. 
+		@if($custom) 
+			Here is the custom Siemens Training Registration Report that you requested.
+		@else
+			Here is the daily Siemens Training Registration Report. 
+		@endif 
 	</p>
 
-	<table style="width: 100%">
-		<tr>
-			<th style="width: 50%; text-align: left;">Name</th>
-			<th style="width: 20%; text-align: left;">Course</th>
-			<th style="width: 15%">Check In Date</th>
-			<th style="width: 15%">Check Out Date</th>
-		</tr>
+	@if(count($registrations) > 150)
+		<p>
+			The table of registrations is not shown in the body of this email because
+			the number of registration requested to be displayed exceeded 150.
+		</p> 
 
-		@foreach($registrations as $registration)
+	@else
+		<p>
+			You can click on a registrants name below to see more details about the 
+			registration.
+		</p> 
+
+		<table style="width: 100%">
 			<tr>
-				<td>
-					<a href= "{{ $base_url }}/registration/{{ $registration["confirmation_num"] }}/{{ $registration["id"] }}/edit/admin">
-						{{ $registration["first_name"] . " " . $registration["last_name"] }}
-					</a>
-				</td>
-				<td>{{ $registration["course_num"] }}</td>
-				<td style="text-align: center;">{{ $registration["check_in_date"] }}</td>
-				<td style="text-align: center;">{{ $registration["check_out_date"] }}</td>
+				<th style="width: 50%; text-align: left;">Name</th>
+				<th style="width: 20%; text-align: left;">Course</th>
+				<th style="width: 15%">Check In Date</th>
+				<th style="width: 15%">Check Out Date</th>
 			</tr>
-		@endforeach
-	</table>
+
+			@foreach($registrations as $registration)
+				<tr>
+					<td>
+						<a href= "{{ $base_url }}/registration/{{ $registration["confirmation_num"] }}/{{ $registration["id"] }}/edit/admin">
+							{{ $registration["first_name"] . " " . $registration["last_name"] }}
+						</a>
+					</td>
+					<td>{{ $registration["course_num"] }}</td>
+					<td style="text-align: center;">{{ $registration["check_in_date"] }}</td>
+					<td style="text-align: center;">{{ $registration["check_out_date"] }}</td>
+				</tr>
+			@endforeach
+		</table>
+	@endif
 @endif
 
 <p>

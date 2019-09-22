@@ -20,7 +20,9 @@ class Kernel extends ConsoleKernel {
 
 	// Schedule -----------------------------------------------------------------
 	protected function schedule(Schedule $schedule) {
-		$schedule->command('command:RunRegistrationReport')->everyMinute();
+		$schedule->command('command:RunRegistrationReport')
+					->timezone('America/Chicago')
+					->at('01:00');
 	}
 
 	// Commands -----------------------------------------------------------------

@@ -26,7 +26,7 @@ class RegistrationReportMail extends Mailable {
 
 	public function __construct($registrations, $custom = FALSE) {
 		$this->registrations = $registrations;
-		$this->base_url      = \URL::to('/') . ":8000";  //TODO: take 8000 out for Production
+		$this->base_url      = \URL::to('/');
 		$this->custom        = $custom;
 	}
 
@@ -36,8 +36,8 @@ class RegistrationReportMail extends Mailable {
 //------------------------------------------------------------------------------
 
 	public function build() {
-		$report_builder = new \App\Logic\build_report($this->registrations);
-		$csv_file       = $report_builder->nightly();
+		$report_builder = new \App\Logic\Build_report($this->registrations);
+		$csv_file       = ($this->custom) ? $report_builder->custom() : $report_builder->nightly();
 		$subject        = "Siemens Training Registration Report for " . date("m/d/Y");
 		$subject        = ($this->custom) ? "Custom " . $subject : $subject;
  

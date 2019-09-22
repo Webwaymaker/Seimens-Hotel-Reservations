@@ -2,7 +2,6 @@
 
 Auth::routes();
 
-
 Route::middleware(['auth'])->group(function () {
 	Route::get    ('/admin',                                  'Admin@index');
 	Route::post   ('/admin/display/registrations',            'Admin@index');
@@ -16,14 +15,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::get    ('/admin/password/{token}/{id}/reset',      'AdminUsers@update');
 });
 
-
-
 Route::post   ('/admin/reset',                               'AdminPasswords@update');
 Route::get    ('/admin/reset/{time}/{token}/{id}',           'AdminPasswords@show'); 
 Route::post   ('/admin/set',                                 'AdminPasswords@update');
 Route::get    ('/admin/set/{token}/{id}',                    'AdminPasswords@index');
-
-
 
 Route::get    ('/forgot',                                    'ForgotConfNum@index');
 Route::post   ('/forgot',                                    'ForgotConfNum@CheckEmail');

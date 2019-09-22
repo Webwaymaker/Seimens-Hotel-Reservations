@@ -2,7 +2,7 @@
 
 namespace App\Logic;
 
-class build_report {
+class Build_report {
 
 //------------------------------------------------------------------------------
 // Properties
@@ -62,12 +62,16 @@ class build_report {
 		$temp_file = tmpFile();
 		fputs($temp_file, $header);
 		fputcsv($temp_file, $columns);
-		foreach($this->registration_query_arr as $registration) {
-			$row = [];
-			foreach($columns as $db_col_name => $junk) {
-				$row[] = $registration[$db_col_name];
+		if(empty($this->registration_query_arr)) {
+			fputs($temp_file, "\n No new registrations were found");
+		} else {
+			foreach($this->registration_query_arr as $registration) {
+				$row = [];
+				foreach($columns as $db_col_name => $junk) {
+					$row[] = $registration[$db_col_name];
+				}
+				fputcsv($temp_file, $row);
 			}
-			fputcsv($temp_file, $row);
 		}
 
 		$csv_path = stream_get_meta_data($temp_file)['uri'];

@@ -35,18 +35,19 @@ class RunRegistrationReportCommand extends Command {
 
 	// Handle -------------------------------------------------------------------
 	public function handle() {		
+//		$eamil_tos     = Report_to::pluck('email');
+
+
 $eamil_to = [
 	"kevin@webwaymaker.com",
 	"reports@webwaymaker.com",
 ];
 	
-//		$eamil_tos     = Report_to::pluck('email');
 		$registrations = Registration::whereNull('reported_at')
 											  ->whereNull('canceled_at')
 											  ->orderBy('check_in_date', 'asc')
 											  ->get()
 											  ->toArray();
-//dd($registrations);
 
 		Mail::to($eamil_to)->send(new RegistrationReportMail($registrations));
 

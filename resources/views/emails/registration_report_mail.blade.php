@@ -7,13 +7,13 @@
 	<p><strong>There are new registrations to report for this day.</strong></p>
 
 @else 
-<p>
-	Below and attached you will find a Siemens Training Registration Report.&nbsp;
-	You can click on a registrants name below to see more details about the 
-	registration. 
-</p>
+	<p>
+		Below and attached you will find a Siemens Training Registration Report.&nbsp;
+		You can click on a registrants name below to see more details about the 
+		registration. 
+	</p>
 
-<table style="width: 100%">
+	<table style="width: 100%">
 		<tr>
 			<th style="width: 50%; text-align: left;">Name</th>
 			<th style="width: 20%; text-align: left;">Course</th>

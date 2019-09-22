@@ -2,7 +2,7 @@
 
 namespace App\Logic;
 
-class access_token {
+class Access_token {
 
 	// Make Toekn ---------------------------------------------------------------
 	public static function makeToken($date_time) {

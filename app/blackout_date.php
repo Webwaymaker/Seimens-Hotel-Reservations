@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class blackout_date extends Model {
+class Blackout_date extends Model {
 
 //------------------------------------------------------------------------------
 // Accessors
@@ -12,7 +12,7 @@ class blackout_date extends Model {
 
 	// Get Access Toekn ---------------------------------------------------------
 	public function getAccessTokenAttribute() {
-		return \App\Logic\access_token::makeToken($this->created_at);
+		return \App\Logic\Access_token::makeToken($this->created_at);
 	} 
 
 	// Get Activate At Date Attribue --------------------------------------------

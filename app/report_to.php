@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class report_to extends Model {
+class Report_to extends Model {
 
 //------------------------------------------------------------------------------
 // Accessors
@@ -12,7 +12,7 @@ class report_to extends Model {
 
 	//Get Access Toekn Attribute ------------------------------------------------
 	public function getAccessTokenAttribute() {
-		return \App\Logic\access_token::makeToken($this->created_at);
+		return \App\Logic\Access_token::makeToken($this->created_at);
 	} 
 
 

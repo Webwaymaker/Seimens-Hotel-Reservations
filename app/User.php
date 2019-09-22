@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class user extends Authenticatable {
+class User extends Authenticatable {
 
 	use Notifiable;
 
@@ -33,7 +33,7 @@ class user extends Authenticatable {
 
 	//Get Access Toekn Attribute ------------------------------------------------
 	public function getAccessTokenAttribute() {
-		return \App\Logic\access_token::makeToken($this->created_at);
+		return \App\Logic\Access_token::makeToken($this->created_at);
 	} 
 
 	

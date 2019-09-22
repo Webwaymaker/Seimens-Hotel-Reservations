@@ -26,13 +26,13 @@
 	<tr><td>&nbsp;</td></tr>
 
 	<tr>
-		<td>Company Name</td>
+		<td>Location</td>
 		<td>
 			<input class="form-control" type="text" name="location" value="{{ old('location', (isset($reg_data->location)) ? $reg_data->location : '') }}">
 		</td>
 	</tr>
 	<tr>
-		<td>Course Number</td>
+		<td>Course</td>
 		<td>
 			<input class="form-control" type="text" name="course_num" value="{{ old('course_num', (isset($reg_data->course_num)) ? $reg_data->course_num : '') }}">
 		</td>
@@ -63,8 +63,8 @@
 		<td>Handicapped Accessable</td>
 		<td>
 			<select class="form-control" name="handicapped">
-				<option value="0" {{ old("handicapped", (isset($reg_data->handicapped)) ? $reg_data->handicapped : -1) == 0 ? 'selected' : '' }}>No</option>
-				<option value="1" {{ old("handicapped", (isset($reg_data->handicapped)) ? $reg_data->handicapped : -1) == 1 ? 'selected' : '' }}>Yes</option>
+				<option value="0" {{ old("handicapped", (isset($reg_data->handicapped)) ? $reg_data->handicapped : -1) == 'No'  ? 'selected' : '' }}>No</option>
+				<option value="1" {{ old("handicapped", (isset($reg_data->handicapped)) ? $reg_data->handicapped : -1) == 'Yes' ? 'selected' : '' }}>Yes</option>
 			</select>
 		</td>
 	</tr>

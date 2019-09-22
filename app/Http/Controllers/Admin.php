@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Mail;
 
 class Admin extends Controller {
 
+
+//------------------------------------------------------------------------------
+// Properties
+//------------------------------------------------------------------------------
+
+	private $search = [
+		'first_name' => NULL, 
+		'last_name'  => NULL, 
+		'check_in'   => NULL,
+		'check_out'  => NULL,
+	];
+
+
 //------------------------------------------------------------------------------
 // Action Methods
 //------------------------------------------------------------------------------
@@ -21,15 +34,10 @@ class Admin extends Controller {
 	public function index(Request $request, $display = "registrations") {
 		switch($display) {
 			case "registrations":
-				$registrations = $this->searchRegistrations($request);
-
-				//Insures that passed search field data is displayed after submission
-				$search["first_name"] = (empty($request->search_first_name)) ? NULL : $request->search_first_name; 
-				$search["last_name"]  = (empty($request->search_last_name))  ? NULL : $request->search_last_name; 
-				$search["check_in"]   = (empty($request->search_check_in))   ? NULL : $request->search_check_in; 
-				$search["check_out"]  = (empty($request->search_check_out))  ? NULL : $request->search_check_out;
-				 
-				$view_data = compact("display", "registrations", "search");       
+				$this->setSearchFields($request);
+				$search        = $this->search;
+				$registrations = $this->searchRegistrations();
+				$view_data     = compact("display", "search", "registrations");      
 				break;
 				 
 			case "administrators":
@@ -59,12 +67,14 @@ class Admin extends Controller {
 //------------------------------------------------------------------------------
 	
 	// Search Registrations -----------------------------------------------------
-	private function searchRegistrations(Request $request) {
-		$first_name = (empty($request->search_first_name)) ? NULL : $request->search_first_name;
-		$last_name  = (empty($request->search_last_name))  ? NULL : $request->search_last_name;
-		$check_in   = (empty($request->search_check_in))   ? NULL : date("Y-m-d H:1:s", strtotime($request->search_check_in));
-		$check_out  = (empty($request->search_check_out))  ? NULL : date("Y-m-d H:1:s", strtotime($request->search_check_out));
-		
+	private function searchRegistrations() {
+		//Not sure why but the "When" clouser will not accept an Array but it will 
+		//accept an explicit variable.  So broke the proprty into explicit variables.
+		$first_name = $this->search["first_name"];
+		$last_name  = $this->search["last_name"];
+		$check_in   = $this->search["check_in"];
+		$check_out  = $this->search["check_out"];
+
 		$registrations = Registration::when($first_name, function($query, $first_name) {
 			                           	return $query->where('first_name', 'like', '%' . $first_name . '%');
 												})
@@ -77,10 +87,40 @@ class Admin extends Controller {
 												->when($check_out, function($query, $check_out) {
 			                           	return $query->where('check_in_date', "<=", $check_out);
 												})
+												->whereNull('canceled_at')
 												->orderBy("check_in_date", "desc")
 												->paginate(20);
 
 		return $registrations;
+	}
+
+
+
+	//Set Search Fields ---------------------------------------------------------
+	private function setSearchFields(Request $request) {
+		if($request->fn) {
+			$this->search["first_name"] = $request->fn;
+		} else {
+			$this->search["first_name"] = (empty($request->search_first_name)) ? NULL : $request->search_first_name;
+		}
+
+		if($request->ln) {
+			$this->search["last_name"]  = $request->ln;
+		} else {
+			$this->search["last_name"]  = (empty($request->search_last_name))  ? NULL : $request->search_last_name;
+		}
+
+		if($request->ci) {
+			$this->search["check_in"]   = date("Y-m-d H:1:s", $request->ci);
+		} else {
+			$this->search["check_in"]   = (empty($request->search_check_in))   ? NULL : date("Y-m-d H:1:s", strtotime($request->search_check_in));
+		}
+
+		if($request->co) {
+			$this->search["check_out"]  = date("Y-m-d H:1:s", $request->co);
+		} else {
+			$this->search["check_out"]  = (empty($request->search_check_out))  ? NULL : date("Y-m-d H:1:s", strtotime($request->search_check_out));
+		}
 	}
 
 

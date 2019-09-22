@@ -86,9 +86,7 @@
 						<td class="text-center">{{ date("m/d/Y", strtotime($registration->check_in_date)) }}</td>
 						<td class="text-center">{{ date("m/d/Y", strtotime($registration->check_out_date)) }}</td>
 						<td class="text-center">
-							<a href="">E</a>
-							&nbsp;
-							<a href="">X</a>
+							<a href="/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit/admin">E</a>
 						</td>
 					</tr>
 				@endforeach		
@@ -106,7 +104,16 @@
 </div>
 
 <div class="d-flex justify-content-end mb-4">
-	{{ $registrations->onEachSide(2)->links() }}
+	{{ 
+		$registrations->onEachSide(2)
+						  ->appends([
+							  "fn" => $search["first_name"],
+							  "ln" => $search["last_name"],
+							  "ci" => strtotime($search["check_in"]),
+							  "co" => strtotime($search["check_out"]),
+						  ])
+						  ->links() 
+	}}
 </div>
 
 

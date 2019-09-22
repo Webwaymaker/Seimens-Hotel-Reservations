@@ -6,6 +6,8 @@ class RegistrationsTableSeeder extends Seeder {
 
 	// Run ----------------------------------------------------------------------
 	public function run() {
+		set_time_limit(0);
+
 		$cntr = 0;
 		if (($fp = fopen("database/seeds/reigistrations_seed_base.csv", "r")) !== FALSE) {
 			while (($data = fgetcsv($fp)) !== FALSE) {

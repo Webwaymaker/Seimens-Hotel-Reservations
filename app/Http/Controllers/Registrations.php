@@ -21,7 +21,13 @@ class Registrations extends Controller {
 	// Show ---------------------------------------------------------------------
 	public function show($conf_num, $id) {
 		$reg_data = $this->GetRegistrationData($conf_num, $id);
-		return view('registrations.update', compact('reg_data', 'conf_num', 'id'));
+		return view('registrations.registration_update', compact('reg_data', 'conf_num', 'id'));
+	}
+
+	// Show Admin ---------------------------------------------------------------
+	public function showAdmin($conf_num, $id) {
+		$reg_data = $this->GetRegistrationData($conf_num, $id);
+		return view('registrations.registration_update_admin', compact('reg_data', 'conf_num', 'id'));
 	}
 
 	// Store --------------------------------------------------------------------
@@ -75,9 +81,9 @@ class Registrations extends Controller {
 			'first_name'     => 'required|max:25',
 			'last_name'      => 'required|max:25',
 			'email'          => 'required|email|max:255',
-			'mobile_num'     => 'required|alpha_num|max:20',
+			'mobile_num'     => 'required|max:20',
 			'location'       => 'required|max:50',
-			'course_num'     => 'required|alpha_num|max:25',
+			'course_num'     => 'required|max:25',
 			'check_in_date'  => 'required|date',
 			'check_out_date' => 'required|date|after_or_equal:check_in_date',
 			'handicapped'    => 'nullable|integer',
@@ -125,13 +131,6 @@ class Registrations extends Controller {
 	public function SendRegistrationEmail(Request $request) {
 		Mail::to($request->email)->send(new RegistrationConfMail($request));
 	}
-
-
-
-
-
-
-
 
 
 } //End Of Class

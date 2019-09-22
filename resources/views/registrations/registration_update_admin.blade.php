@@ -8,19 +8,13 @@
 					<div class="card-header">Hotel Registration - Update</div>
 					<div class="card-body">
 
+						<h3>Administrator - Registration Update</h3>
+						
 						<div class="alert alert-info">
-							<h3>Important</h3>
-							<ul>
-								<li>
-									Registrations updates may not process if within 24 hours
-									of the registration's check in date. 									
-								</li>
-								<li>
-									If you have any questions or need assistance, contact 
-									BT University at ...<br />
-									<a href="mailto: btuniversity.i-bt@siemens.com">btuniversity.i-bt@siemens.com</a>.
-								</li>
-							</ul>
+							Please note that any changes you make here will not be 
+							reported back to the individual who submitted the 
+							Registration.&nbsp;  Please call them and notify them of 
+							the change.
 						</div>
 										  
 						@if ($errors->any())
@@ -53,7 +47,7 @@
 							</div>
 						</div>
 
-					</div>					 
+					</div>
             </div>
         </div>
     </div>

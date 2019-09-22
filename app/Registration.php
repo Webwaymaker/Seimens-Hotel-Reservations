@@ -27,4 +27,14 @@ class registration extends Model {
 		return date("m/d/Y", strtotime($value));
 	}
 
+	// Get Handicapped Attribue -------------------------------------------------
+	public function getHandicappedAttribute($value) {
+		return ($value) ? "Yes" : "No";
+	}
+
+	// Get Handicapped Attribue -------------------------------------------------
+	public function getSpecialReqAttribute($value) {
+		return ($value) ? $value : "None";
+	}
+
 } //End of Class

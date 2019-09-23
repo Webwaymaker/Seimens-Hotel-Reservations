@@ -16,8 +16,8 @@
 		<div class="card-header">Search Registration</div>
 		<div class="card-body">
 			<p>
-				To search the Registration List please enter your search criteria below 
-				- Name, Check In Date and/or Check Out Date.
+				To search the Registration list, please enter your search criteria 
+				below.
 			</p>
 
 			<div class="row  mb-3">
@@ -76,7 +76,8 @@
 		<div class="card-body">
 			<table class="w-100">
 				<tr>
-					<th class="w-50">Name</th>
+					<th style="width: 40%">Name</th>
+					<th>Course</th>
 					<th class="text-center">Check In</th>
 					<th class="text-center">Check Out</th>
 					<th class="text-center">Actions</th>
@@ -85,10 +86,13 @@
 					@foreach($registrations as $registration)
 						<tr>
 							<td>{{ $registration->first_name . " " . $registration->last_name }}</td>
+							<td>{{ $registration->course_num }}</td>
 							<td class="text-center">{{ date("m/d/Y", strtotime($registration->check_in_date)) }}</td>
 							<td class="text-center">{{ date("m/d/Y", strtotime($registration->check_out_date)) }}</td>
 							<td class="text-center">
-								<a href="/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit/admin">E</a>
+								<a href="/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit/admin">
+									<i class="fas fa-pencil-alt"></i>
+								</a>
 							</td>
 						</tr>
 					@endforeach		
@@ -99,7 +103,7 @@
 							--- No Registrations Were Found ---
 						</td>
 					</tr>
-					<tr><td>&nbsp</td></tr>
+					<tr><td>&nbsp;</td></tr>
 				@endif
 			</table>
 		</div>
@@ -124,7 +128,7 @@
 		<div class="card-header">Reports</div>
 		<div class="card-body">
 			<p>
-				To download a CSV Report of Registration information please complete a 
+				To download a CSV Report of Registration information, please complete a 
 				search for the data you are looking for above and then click the 
 				"Download Report" button.
 			</p>

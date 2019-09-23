@@ -21,8 +21,8 @@ class AdminPasswords extends Controller {
 		$valid_token = \App\Logic\Access_token::validateToken($admin[0]->created_at, $token);
 		if($valid_token == FALSE) return redirect(404);
 
-		//Check If Expiered (User has 60 minutes to respond)
-		if($time + 3600 < time()) {
+		//Check If Expiered (User has 48 hours to respond)
+		if($time + 3600 * 48 < time()) {
 			return redirect(410);  //410 = HTTP Response "Gone" -> https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410
 		}
 

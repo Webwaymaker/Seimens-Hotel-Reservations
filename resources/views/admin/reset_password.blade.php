@@ -11,8 +11,8 @@
 					<h3>Administrator Account Password Reset</h3>
 
 					<p>
-						To reset you password for the Siemen's Hotel Registration system
-						Please enter a new and matching confirmation Password. 
+						To reset your password for the Siemen's Hotel Registration system,
+						please enter a new and matching confirmation Password. 
 					</p> 
 
 					@if ($errors->any())
@@ -51,7 +51,7 @@
 							</tr>
 							<tr>
 								<td class="text-right" colspan="2">
-									<button class="btn btn-primary" type="submit">Set Password</button>
+									<button class="btn btn-primary" type="submit">Reset Password</button>
 								</td>
 							</tr>
 						</table>

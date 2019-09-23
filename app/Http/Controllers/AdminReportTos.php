@@ -34,7 +34,7 @@ class AdminReportTos extends Controller {
 		$report_to->email = $request->report_to_email;
 		$report_to->save();
 
-		return back()->with('status', $report_to->email . ' has been added as a new Report-to.');
+		return back()->with('status', $report_to->email . ' has been added as a new Report-To.');
 	}
 
 

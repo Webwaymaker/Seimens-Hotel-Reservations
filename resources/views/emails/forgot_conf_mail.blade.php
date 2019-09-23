@@ -1,6 +1,8 @@
 <h2>Siemens - Registration Confirmation Numbers</h2>
 
-<p>As requested, a list of all confirmation numbers registered under this email address</p> 
+<p>As requested, a list of all confirmation numbers registered under this email address.</p>
+
+<p>Click on a confirmation number to edit or cancel the Registration</p>
 
 <table>
 	<tr>
@@ -16,7 +18,7 @@
 	@foreach($reg_conf_arr as $reg_conf)
 		<tr>
 			<td>
-				<a href="http://ccreg.webwaymaker.com/registration/{{ $reg_conf["confirmation_num"] }}/{{ $reg_conf["id"] }}/edit">
+				<a href="https://www.corpcoach.net/registration/{{ $reg_conf["confirmation_num"] }}/{{ $reg_conf["id"] }}/edit">
 					{{ $reg_conf["confirmation_num"] }}
 				</a>
 			</td>
@@ -29,5 +31,3 @@
 		</tr>
 	@endforeach
 </table>
-
-<p>Click on a confirmation number to edit or cancel the registration</p>

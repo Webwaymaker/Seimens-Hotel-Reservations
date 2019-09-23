@@ -11,8 +11,8 @@
 					<h3>Success</h3>
 
 					<p>
-						An email has been sent to {{ $email }}.  With all the confirmation
-						numbers associated to the address.
+						An email has been sent to {{ $email }} with all the confirmation
+						numbers associated to this address.
 					</p>
 
 					<div class="text-right">

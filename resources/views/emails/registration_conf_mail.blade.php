@@ -1,10 +1,10 @@
 <h2>Siemens Registration</h2>
 
-<p>Thank you for your registration it has been successfully submitted.</p> 
+<p>Thank you for your registration.&nbsp; It has been successfully submitted.</p> 
 
-<p>Your confirmation number is <strong>{{ $registration->confirmation_num }}</strong> </p>
+<p>Your confirmation number is: <strong>{{ $registration->confirmation_num }}</strong> </p>
 
-<h3>Your Registration Details...</h3>
+<h3>Below is a list of your Registration details.</h3>
 
 <table>
 	<tr>
@@ -36,7 +36,7 @@
 		<td>{{ $registration->check_in_date }}</td>
 	</tr>
 	<tr>
-		<td>Check Out Data: </td>
+		<td>Check Out Date: </td>
 		<td>{{ $registration->check_out_date }}</td>
 	</tr>
 	<tr>
@@ -50,8 +50,8 @@
 </table>
 
 <p>
-	If you would like to Edit or Cancel your registration please click
-	<a href="/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit">Here</a>.
+	If you would like to Edit or Cancel your Registration, please click
+	<a href="https://www.corpcoach.net/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit">Here</a>.
 </p>
 
 <p>Enjoy your stay!</p>

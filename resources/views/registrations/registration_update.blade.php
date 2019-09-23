@@ -12,8 +12,8 @@
 							<h3>Important</h3>
 							<ul>
 								<li>
-									Registrations updates may not process if within 24 hours
-									of the registration's check in date. 									
+									Registration updates may not process within 24 hours
+									of the registration check in date. 									
 								</li>
 								<li>
 									If you have any questions or need assistance, contact 

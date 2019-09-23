@@ -13,11 +13,11 @@
 	<div class="card-body">
 		<p>
 			<small>
-				To set a new Blackout provide the activation date.&nbsp; 
-				The date that you would blackout would be displayed.&nbsp;
-				Set the start and end date of the Blackout.&nbsp; Then 
-				give the Blackout a descriptor that the customer will see 
-				so they can understand why the dates are not available.
+				To set a new Blackout, provide the activation date&nbsp; 
+				(This is the date that you would first like customers to be made 
+				aware of the Blackout).&nbsp; Set the start and end date of the 
+				Blackout.&nbsp; Then give the Blackout a descriptor that the customer 
+				will see so they can understand why the dates are not available.
 			</small>
 		</p>
 		<form method="post" action="/admin/blackout">
@@ -81,7 +81,9 @@
 						<td class="text-center">{{ $blackout->start_at }}</td>
 						<td class="text-center">{{ $blackout->end_at }}</td>
 						<td class="text-center">
-							<a href="/admin/blackout/{{ $blackout->access_token }}/{{ $blackout->id }}/delete">X</a>
+							<a href="/admin/blackout/{{ $blackout->access_token }}/{{ $blackout->id }}/delete">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
 						</td>
 					</tr>
 				@endforeach	
@@ -89,7 +91,7 @@
 				<tr><td>&nbsp</td></tr>
 				<tr>
 					<td class="text-danger text-center" colspan="5">
-						--- No Active Blackout Dates Were Found ---
+						--- No active Blackout dates Were Found ---
 					</td>
 				</tr>
 				<tr><td>&nbsp</td></tr>

@@ -18,7 +18,7 @@ class RunRegistrationReportCommand extends Command {
 	protected $signature   = 'command:RunRegistrationReport';
 	protected $description = 'This command runs the nightly registration report 
 									  and sends it to all email addresses on the Report_Tos 
-									  database  table';
+									  database table.';
 
 //------------------------------------------------------------------------------
 // Constructor

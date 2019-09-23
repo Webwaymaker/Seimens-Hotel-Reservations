@@ -1,4 +1,4 @@
-<h2 class="mb-2">Manage Report Tos</h2>
+<h2 class="mb-2">Manage Report-Tos</h2>
 	
 
 @if (session('status'))
@@ -9,13 +9,11 @@
 
 
 <div class="card mb-4">
-	<div class="card-header">Add A New Report-to</div>
+	<div class="card-header">Add A New Report-To</div>
 	<div class="card-body">
 		<p>
-			<small>
-				The new Report-to will start to recieve reports via email
-				on the next automated report submission.
-			</small>
+			The new Report-To will start to recieve reports via email
+			on the next automated report submission.
 		</p>
 		<form method="post" action="/admin/add/report_to">
 			@csrf
@@ -40,14 +38,16 @@
 	<div class="card-body">
 		<table class="w-100">
 			<tr>
-				<th style="width: 90%">Report To Email Address</th>
+				<th style="width: 90%">Report-To Email Address</th>
 				<th class="text-center">Actions</th>
 			</tr>
 			@foreach($report_tos as $report_to)
 				<tr>
 					<td>{{ $report_to->email }}</td>
 					<td class="text-center">
-						<a href="/admin/report_to/{{ $report_to->access_token }}/{{ $report_to->id }}/delete">X</a>
+						<a href="/admin/report_to/{{ $report_to->access_token }}/{{ $report_to->id }}/delete">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
 					</td>
 				</tr>
 			@endforeach	

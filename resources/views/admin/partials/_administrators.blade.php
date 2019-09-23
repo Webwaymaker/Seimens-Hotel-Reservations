@@ -7,12 +7,12 @@
 @endif
 
 <div class="card mb-4">
-	<div class="card-header">Add A New Adminstrators</div>
+	<div class="card-header">Add A New Adminstrator</div>
 	<div class="card-body">
 		<p>
 			<small>
-				Once an adminstrator has been added an email will be sent
-				to the admin's email address asking them to set thier 
+				Once an Adminstrator has been added, an email will be sent
+				to the Adminstrator's email address asking them to create a 
 				password.
 			</small>
 		</p>
@@ -40,7 +40,7 @@
 </div>
 
 <div class="card mb-4">
-	<div class="card-header">Adminstrator List</div>
+	<div class="card-header">Administrator List</div>
 	<div class="card-body">
 		<table class="w-100">
 			<tr>
@@ -53,9 +53,13 @@
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->email }}</td>
 					<td class="text-center">
-						<a href="/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset">R</a>
+						<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
 						&nbsp;
-						<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">X</a>
+						<a href="/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset">
+							<i class="fas fa-key"></i>
+						</a>
 					</td>
 				</tr>
 			@endforeach	

@@ -17,7 +17,7 @@
 								<li>
 									For our Customers and Partners, please complete this form to
 									make hotel reservations. <u>You will receive a confirmation
-									email on the Thursday before your class beings</u>.
+									email on the Thursday before your class begins</u>.
 								</li>
 
 								<li>

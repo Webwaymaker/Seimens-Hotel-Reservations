@@ -13,7 +13,7 @@
 						<div class="alert alert-info">
 							Please note that any changes you make here will not be 
 							reported back to the individual who submitted the 
-							Registration.&nbsp;  Please call them and notify them of 
+							Registration.&nbsp;  Please call and notify them of 
 							the change.
 						</div>
 										  

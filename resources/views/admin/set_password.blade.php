@@ -12,11 +12,11 @@
 
 					<p>
 						You have just been added to the Siemen's Hotel Registration 
-						system as a site Administrator.
+						system as a Site Administrator.
 					</p> 
 
 					<p>
-						To finalize your activation please create a password.						
+						To finalize your activation, please create a password.						
 					</p>
 
 					@if ($errors->any())

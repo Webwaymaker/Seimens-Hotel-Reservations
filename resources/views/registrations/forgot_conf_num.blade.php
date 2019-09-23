@@ -30,7 +30,7 @@
 
 					@if(isset($invalid))
 						<div class="alert alert-danger mb-4">
-							The email address you entered is was not found.&nbsp; Please 
+							The email address you entered was not found.&nbsp; Please 
 							check the spelling of the email address or enter a new 
 							email address.  
 						</div>	

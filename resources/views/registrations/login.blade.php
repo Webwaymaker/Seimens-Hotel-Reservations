@@ -13,14 +13,13 @@
 					<p>
 						Please enter your the email address you used when creating your 
 						registration and the registration's confirmation number below. 
-						&nbsp; If you do not remember you confirmation number please 
+						&nbsp; If you do not remember your confirmation number please 
 						click  "Forgot Confirmation Number" to have it emailed to you.
 					</p>
 					
 					<p>
 						<strong>Note:</strong> Registrations may not be available to 
-						modify if it is within 24 hours of the registration's check in 
-						date. 
+						modify within 24 hours of the registration's check in date. 
 					</p>
 
 					@if ($errors->any())
@@ -37,7 +36,7 @@
 						<div class="alert alert-danger mb-4">
 							The email and/or confirmation number you entered is not a 
 							match for a registration.  If you are unsure of your 
-							confirmation number please click the <a href="/forgot">Here</a>
+							confirmation number please click <a href="/forgot">Here</a>
 						</div>	
 					@endif
 

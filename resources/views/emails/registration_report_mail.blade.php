@@ -18,13 +18,12 @@
 	@if(count($registrations) > 150)
 		<p>
 			The table of registrations is not shown in the body of this email because
-			the number of registration requested to be displayed exceeded 150.
+			the number of registrations requested to be displayed exceeded 150.
 		</p> 
 
 	@else
 		<p>
-			You can click on a registrants name below to see more details about the 
-			registration.
+			You can click on a registrants name below to find more information.
 		</p> 
 
 		<table style="width: 100%">
@@ -53,7 +52,7 @@
 
 <p>
 	<small>
-		Please do not respond to this email it will go to an email box that is not 
+		Please do not respond to this email.&nbsp; This email box that is not 
 		monitored.
 	</small>
 </p>

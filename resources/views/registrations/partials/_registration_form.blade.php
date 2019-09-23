@@ -60,7 +60,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td>Handicapped Accessable</td>
+		<td>Handicapped Accessible</td>
 		<td>
 			<select class="form-control" name="handicapped">
 				<option value="0" {{ old("handicapped", (isset($reg_data->handicapped)) ? $reg_data->handicapped : -1) == 'No'  ? 'selected' : '' }}>No</option>

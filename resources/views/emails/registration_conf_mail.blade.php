@@ -51,7 +51,7 @@
 
 <p>
 	If you would like to Edit or Cancel your Registration, please click
-	<a href="https://www.corpcoach.net/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit">Here</a>.
+	<a href="https://siemens.corpcoach.net/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit">Here</a>.
 </p>
 
 <p>Enjoy your stay!</p>

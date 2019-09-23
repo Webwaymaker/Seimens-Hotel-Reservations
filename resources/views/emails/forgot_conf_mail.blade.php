@@ -18,7 +18,7 @@
 	@foreach($reg_conf_arr as $reg_conf)
 		<tr>
 			<td>
-				<a href="https://www.corpcoach.net/registration/{{ $reg_conf["confirmation_num"] }}/{{ $reg_conf["id"] }}/edit">
+				<a href="https://siemens.corpcoach.net/registration/{{ $reg_conf["confirmation_num"] }}/{{ $reg_conf["id"] }}/edit">
 					{{ $reg_conf["confirmation_num"] }}
 				</a>
 			</td>

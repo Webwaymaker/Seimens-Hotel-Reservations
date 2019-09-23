@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------------
+ Work To Do
+--------------------------------------------------------------------------------
+
+- Add Confirm delete everywere!!!
+
+- Add Calendar Dropdowns on all Calendar fields
+
+- Fix conflicts not showing when createing a Blockout
+
+- Add Blackout functionality when registering
+
+- Reset Admin page not reseting passwords
+
+- Add where to send users once they have canceled an order
+	- User  = Registration page
+	- Admin = Admin/registrations
+
+- Add back button to add more registrations after creating a registration
+
+- Protect my admin and chris's admin accounts from change 
+
+- After reseting an admin password through the reset email need to redirect back 
+  to admin/administrators
+
+  

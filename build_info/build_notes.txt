@@ -1,0 +1,81 @@
+--------------------------------------------------------------------------------
+ Log of Deployment Activity
+--------------------------------------------------------------------------------
+
+- Created Siemens subdomain on corpcoach.net (siemens.corpcoach.net)
+
+- Verified PHP version on siemens.corpcoach.net (PHP 7.3)
+
+- Created app_registrations directory under root on corpchoach.net
+
+- Created corpcoac_registrations DB on corpcoach.net
+
+- Created DB user corpcoac_reg (Zpo7GC2T8z+g) on corpcoach.net
+
+- Downloaded the master (clean) database from Dev
+
+- Uploaded the master database to corpcoach.net's corpcoac_registrations DB
+
+- Zipped Project from Dev
+
+- FTPd zipped project to app_registrations on corpcoach.net
+
+- From Blue Host's File manger extracted the project zip into app_registrations
+
+- Moved project zip to app_registrations/build_info on corpcoach.net
+
+- Deleted the "public" directory from app_registrations
+
+- FTPd Public folder from dev into corpcoach.net's public_html/siemens
+
+- Opened public_html/siemens/index.php via Blue Host's file manager editor
+	- Changed...
+		- require __DIR__.'/../vendor/autoload.php';
+			- To: require '/home/corpcoac/app_registrations/vendor/autoload.php';
+		- $app = require_once __DIR__.'/../bootstrap/app.php';
+			- TO: $app = require_once '/home/corpcoac/app_registrations/bootstrap/app.php';
+
+- Opened app_registrations/.env via Blue Host's file manager editor
+	- Update the follwoing sections with corpcoach.net specific data
+
+			APP_DEBUG=false
+			APP_URL=https://siemens.corpcoach.net
+
+			DB_CONNECTION=mysql
+			DB_HOST=127.0.0.1
+			DB_PORT=3306
+			DB_DATABASE=corpcoac_registrations
+			DB_USERNAME=corpcoac_reg
+			DB_PASSWORD=Zpo7GC2T8z+g
+
+			MAIL_DRIVER=smtp
+			MAIL_HOST=corpcoach.net
+			MAIL_PORT=465
+			MAIL_USERNAME=noreply@corpcoach.net
+			MAIL_PASSWORD=Y;vmaG!+}]WE
+			MAIL_ENCRYPTION=SSL
+
+- Add Cron Job for Laravel Scheduler in corpcoach.net
+	- Common Settings: Once Per Minute (* * * * *)
+	- Command: /usr/local/bin/ea-php73 /home/corpcoac/app_registrations/artisan schedule:run > /dev/null 2>&1
+		- See: https://www.youtube.com/watch?v=x7yQkQMp7Lw
+
+- Changed the "From" mail to noreply@corpcoach.net from the dev server mail in...
+	- app_registrations/app/mail/AdminPasswordResetMail.php
+	- app_registrations/app/mail/AdminPasswordSetMail.php
+	- app_registrations/app/mail/ForgotConfMail.php
+	- app_registrations/app/mail/RegistrationConfMail.php
+	- app_registrations/app/mail/RegistrationReportMail.php		
+
+- Changed all links on system emails to siemens.corpcoach.net in...
+	- /app_registrations/resources/views/emails/admin_password_reset_mail.blade.php
+	- /app_registrations/resources/views/emails/admin_password_set_mail.blade.php
+	- /app_registrations/resources/views/emails/forgot_conf_mail.blade.php
+	- /app_registrations/resources/views/emails/registration_conf_mail.blade.php
+	- /app_registrations/resources/views/emails/registration_report_mail.blade.php
+
+- (NOT DONE) Changed default passwords on all administrator to accounts to a random string
+
+- (NOT DONE) Set a password reset request to admins
+
+

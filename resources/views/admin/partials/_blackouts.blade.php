@@ -82,7 +82,7 @@
 						<td class="text-center">{{ $blackout->end_at }}</td>
 						<td class="text-center">
 							<a href="/admin/blackout/{{ $blackout->access_token }}/{{ $blackout->id }}/delete">
-								<i class="fas fa-pencil-alt"></i>
+								<i class="fas fa-trash"></i>
 							</a>
 						</td>
 					</tr>

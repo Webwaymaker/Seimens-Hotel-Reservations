@@ -46,7 +46,7 @@
 					<td>{{ $report_to->email }}</td>
 					<td class="text-center">
 						<a href="/admin/report_to/{{ $report_to->access_token }}/{{ $report_to->id }}/delete">
-							<i class="fas fa-pencil-alt"></i>
+							<i class="fas fa-trash"></i>
 						</a>
 					</td>
 				</tr>

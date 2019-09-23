@@ -6,7 +6,7 @@
 </p>  
 
 <p>
-	<a href="https://corpcoach.net/registration/admin/reset/{{ time() }}/{{ $admin->access_token }}/{{ $admin->id }}">
+	<a href="https://siemens.corpcoach.net/registration/admin/reset/{{ time() }}/{{ $admin->access_token }}/{{ $admin->id }}">
 		Please click here to reset your password
 	</a>
 </p>

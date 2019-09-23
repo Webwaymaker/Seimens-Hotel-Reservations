@@ -53,12 +53,12 @@
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->email }}</td>
 					<td class="text-center">
-						<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">
-							<i class="fas fa-pencil-alt"></i>
-						</a>
-						&nbsp;
 						<a href="/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset">
 							<i class="fas fa-key"></i>
+						</a>
+						&nbsp;
+						<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">
+							<i class="fas fa-trash"></i>
 						</a>
 					</td>
 				</tr>

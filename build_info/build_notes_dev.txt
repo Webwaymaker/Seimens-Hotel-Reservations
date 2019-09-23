@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------------
+ Log of Deployment Activity
+--------------------------------------------------------------------------------
+
+- Dev .env file setting
+
+	DB_CONNECTION=mysql
+	DB_HOST=webwaymaker.com
+	DB_PORT=3306
+	DB_DATABASE=tableto9_corp_coach_siemens
+	DB_USERNAME=tableto9_cc_siem
+	DB_PASSWORD=;]Det&)b=?Kv
+
+	MAIL_DRIVER=smtp
+	MAIL_HOST=mail.webwaymaker.com
+	MAIL_PORT=465
+	MAIL_USERNAME=dev@webwaymaker.com
+	MAIL_PASSWORD=M]e{IyZx}X%A
+	MAIL_ENCRYPTION=SSL

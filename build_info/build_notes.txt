@@ -79,3 +79,7 @@
 - (NOT DONE) Set a password reset request to admins
 
 
+
+m0 h0 php -q public_html/registrations/siemens/training/run_report.php
+
+

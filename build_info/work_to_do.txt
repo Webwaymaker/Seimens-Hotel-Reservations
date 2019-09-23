@@ -23,4 +23,9 @@
 - After reseting an admin password through the reset email need to redirect back 
   to admin/administrators
 
-  
+- Add meeting background to the site.
+
+- Give the ability to only see non reported registrations in the registrations table
+
+- When sending out custom reports add an email field with them selves defaulted in
+

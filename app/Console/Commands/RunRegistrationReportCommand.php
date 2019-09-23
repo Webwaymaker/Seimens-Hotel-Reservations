@@ -42,7 +42,7 @@ class RunRegistrationReportCommand extends Command {
 											  ->get()
 											  ->toArray();
 
-		Mail::to($eamil_to)->send(new RegistrationReportMail($registrations));
+		Mail::to($eamil_tos)->send(new RegistrationReportMail($registrations));
 
 		Registration::whereNull('reported_at')->update(['reported_at' => Carbon::now()]);
 	}

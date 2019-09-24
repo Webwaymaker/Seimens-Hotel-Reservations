@@ -1,5 +1,20 @@
 <?php
 
+//------------------------------------------------------------------------------
+// Management Routes
+//------------------------------------------------------------------------------
+
+Route::middleware(['auth'])->group(function () {
+	Route::get    ('/managment/clear_cache',                  'Managment\CliCacheController@clearCache');
+	Route::get    ('/managment/clear_cache_all',              'Managment\CliCacheController@ClearCacheAll');
+	Route::get    ('/managment/clear_config_cache',           'Managment\CliCacheController@clearConfigCache');
+});
+
+
+//------------------------------------------------------------------------------
+// Project Routes
+//------------------------------------------------------------------------------
+
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {

@@ -38,6 +38,8 @@
 - Opened app_registrations/.env via Blue Host's file manager editor
 	- Update the follwoing sections with corpcoach.net specific data
 
+			APP_NAME="Siemens Training Hotle Registration"
+			APP_ENV=production
 			APP_DEBUG=false
 			APP_URL=https://siemens.corpcoach.net
 
@@ -76,10 +78,7 @@
 
 - (NOT DONE) Changed default passwords on all administrator to accounts to a random string
 
-- (NOT DONE) Set a password reset request to admins
+- (NOT DONE) Send a password reset request to admins
 
-
-
-m0 h0 php -q public_html/registrations/siemens/training/run_report.php
 
 

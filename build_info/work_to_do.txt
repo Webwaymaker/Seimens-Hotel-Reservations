@@ -2,6 +2,8 @@
  Work To Do
 --------------------------------------------------------------------------------
 
+- Reset Admin page not reseting passwords
+
 - Add Confirm delete everywere!!!
 
 - Add Calendar Dropdowns on all Calendar fields
@@ -9,8 +11,6 @@
 - Fix conflicts not showing when createing a Blockout
 
 - Add Blackout functionality when registering
-
-- Reset Admin page not reseting passwords
 
 - Add where to send users once they have canceled an order
 	- User  = Registration page
@@ -29,3 +29,5 @@
 
 - When sending out custom reports add an email field with them selves defaulted in
 
+https://siemens.corpcoach.net/admin/set/8a8522ad449965cfb32e3076fe7bfd77/13
+https://siemens.corpcoach.net/registrati8a8522ad449965cfb32e3076fe7bfd77/13

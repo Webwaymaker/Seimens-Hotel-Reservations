@@ -51,6 +51,7 @@ class Admin extends Controller {
 				 
 			case "administrators":
 				$users = User::all();
+//dd($users[5]->protect_admin_delete);
 				$view_data = compact("display", "users");       
 				break;
 

@@ -22,7 +22,8 @@ class AdminPasswords extends Controller {
 		if($valid_token == FALSE) return redirect(404);
 
 		//Check If Expiered (User has 48 hours to respond)
-		if($time + 3600 * 48 < time()) {
+		$expire_stamp = $time + (3600 * 48);
+		if($expire_stamp < time()) {
 			return redirect(410);  //410 = HTTP Response "Gone" -> https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410
 		}
 

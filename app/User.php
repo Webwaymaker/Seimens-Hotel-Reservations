@@ -36,5 +36,32 @@ class User extends Authenticatable {
 		return \App\Logic\Access_token::makeToken($this->created_at);
 	} 
 
-	
+	//Get Protect Admin Delete Attribute --------------------------------
+	public function getProtectAdminDeleteAttribute() {
+		if($this->id == \Auth::user()->id) return TRUE;
+		return $this->ProtectedAdmin($this->id);
+	} 
+
+	//Get Protect Admin Reset Password Attribute --------------------------------
+	public function getProtectAdminResetPasswordAttribute() {
+		if($this->id == \Auth::user()->id) return FALSE;
+		return $this->ProtectedAdmin($this->id);
+	} 
+
+
+//------------------------------------------------------------------------------
+// Private Methods
+//------------------------------------------------------------------------------
+
+	// Protected Admin ----------------------------------------------------------
+	private function ProtectedAdmin($id) {
+		$protected_admins = [
+			1,  //Kevin Bell's user_id
+			2,  //Chris Peterson's user_id
+		];
+
+		return in_array($id, $protected_admins);
+	}
+
+
 } //End of Class

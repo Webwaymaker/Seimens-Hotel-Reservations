@@ -2,11 +2,12 @@
  Work To Do
 --------------------------------------------------------------------------------
 
-- Reset Admin page not reseting passwords
-
-- Add Confirm delete everywere!!!
+- Reset Admin page not reseting passwords														Fixed: 09/24/2019 1:33 AM
+- Protect my admin and chris's admin accounts from change                        Added: 09/24/2019 2:58 PM
 
 - Add Calendar Dropdowns on all Calendar fields
+
+- Add Confirm delete everywere!!!
 
 - Fix conflicts not showing when createing a Blockout
 
@@ -18,16 +19,13 @@
 
 - Add back button to add more registrations after creating a registration
 
-- Protect my admin and chris's admin accounts from change 
-
 - After reseting an admin password through the reset email need to redirect back 
   to admin/administrators
 
 - Add meeting background to the site.
 
-- Give the ability to only see non reported registrations in the registrations table
+- Give the ability to only see non reported registrations in the registrations 
+  table
 
-- When sending out custom reports add an email field with them selves defaulted in
-
-https://siemens.corpcoach.net/admin/set/8a8522ad449965cfb32e3076fe7bfd77/13
-https://siemens.corpcoach.net/registrati8a8522ad449965cfb32e3076fe7bfd77/13
+- When sending out custom reports add an email field with them selves defaulted 
+  in

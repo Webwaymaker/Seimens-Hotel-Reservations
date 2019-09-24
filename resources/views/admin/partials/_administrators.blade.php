@@ -53,13 +53,17 @@
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->email }}</td>
 					<td class="text-center">
-						<a href="/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset">
-							<i class="fas fa-key"></i>
-						</a>
+						@if($user->protect_admin_reset_password == FALSE)
+							<a href="/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset">
+								<i class="fas fa-key"></i>
+							</a>
+						@endif
 						&nbsp;
-						<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">
-							<i class="fas fa-trash"></i>
-						</a>
+						@if($user->protect_admin_delete == FALSE)
+							<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">
+								<i class="fas fa-trash"></i>
+							</a>
+						@endif
 					</td>
 				</tr>
 			@endforeach	

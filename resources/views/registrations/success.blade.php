@@ -26,6 +26,9 @@
 							Here
 						</a>.	
 					</p>
+					<div class="text-right">
+						<a class="btn btn-primary" href="{{ url("/registration") }}">Complete Another Registration</a>
+					</div>
 				</div>					
 			</div>
 		</div>

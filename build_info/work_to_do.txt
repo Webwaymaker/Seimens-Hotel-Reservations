@@ -4,6 +4,9 @@
 
 - Reset Admin page not reseting passwords														Fixed: 09/24/2019 1:33 AM
 - Protect my admin and chris's admin accounts from change                        Added: 09/24/2019 2:58 PM
+- Add back button to add more registrations after creating a registration        Added: 09/25/2019 10:54 AM
+ 
+- Nightly CRON report is not working
 
 - Add Calendar Dropdowns on all Calendar fields
 
@@ -16,8 +19,6 @@
 - Add where to send users once they have canceled an order
 	- User  = Registration page
 	- Admin = Admin/registrations
-
-- Add back button to add more registrations after creating a registration
 
 - After reseting an admin password through the reset email need to redirect back 
   to admin/administrators

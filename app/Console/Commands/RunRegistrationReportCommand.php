@@ -36,6 +36,7 @@ class RunRegistrationReportCommand extends Command {
 	// Handle -------------------------------------------------------------------
 	public function handle() {		
 		$eamil_tos     = Report_to::pluck('email');
+$eamil_tos = ["kevin@webwaymaker.com", "accounts@webwaymaker.com"];		
 		$registrations = Registration::whereNull('reported_at')
 											  ->whereNull('canceled_at')
 											  ->orderBy('check_in_date', 'asc')
@@ -44,7 +45,7 @@ class RunRegistrationReportCommand extends Command {
 
 		Mail::to($eamil_tos)->send(new RegistrationReportMail($registrations));
 
-		Registration::whereNull('reported_at')->update(['reported_at' => Carbon::now()]);
+		//Registration::whereNull('reported_at')->update(['reported_at' => Carbon::now()]);
 	}
 
 } //End of class

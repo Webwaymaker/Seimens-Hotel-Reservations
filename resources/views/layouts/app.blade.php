@@ -11,18 +11,17 @@
 
     <!-- Scripts -->
 	 <script src="{{ asset('js/app.js') }}"></script> 
-	 <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 	 <script src="https://kit.fontawesome.com/6dd2699241.js" crossorigin="anonymous"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+	 
+	 @yield('top_scripts')
 
 	 <!-- Styles -->
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	 <link href="{{ asset('css/jquery_datetimepicker_2.5.20_min.css') }}" rel="stylesheet">
+	 
+	 @yield('styles')
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -76,6 +75,8 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
+	 </div>
+	 
+	 @yield('bottom_scripts')
 </body>
 </html>

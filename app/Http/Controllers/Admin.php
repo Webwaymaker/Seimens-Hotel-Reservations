@@ -36,8 +36,10 @@ class Admin extends Controller {
 		switch($display) {
 			case "registrations":
 				$this->setSearchFields($request);
-				$search        = $this->search;
-				$registrations = $this->getPaginatedRegistrations();
+				$search              = $this->search;
+				$search["check_in"]  = (!is_null($this->search['check_in']))  ? date("m/d/Y", strtotime($this->search['check_in']))  : NULL;
+				$search["check_out"] = (!is_null($this->search['check_out'])) ? date("m/d/Y", strtotime($this->search['check_out'])) : NULL;
+				$registrations       = $this->getPaginatedRegistrations();
 				
 				//check for report run request and send the report
 				if($request->has("btn_report")) {

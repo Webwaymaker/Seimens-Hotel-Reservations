@@ -42,13 +42,23 @@
 	<tr>
 		<td>Check In Date</td>
 		<td>
-			<input class="form-control" type="text" name="check_in_date" value="{{ old('check_in_date', (isset($reg_data->check_in_date)) ? $reg_data->check_in_date : '') }}" placeholder="MM/DD/YYYY">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<button id="toggle1" class="input-group-text" type="button"><i class="fa fa-calendar-alt"></i></button>
+				</div>
+				<input id="picker1" class="form-control" type="text" name="check_in_date" value="{{ old('check_in_date', (isset($reg_data->check_in_date)) ? $reg_data->check_in_date : '') }}" placeholder="MM/DD/YYYY">
+			</div>
 		</td>
 	</tr>
 	<tr>
 		<td>Check Out Date</td>
 		<td>
-			<input class="form-control" type="text" name="check_out_date" value="{{ old('check_out_date', (isset($reg_data->check_out_date)) ? $reg_data->check_out_date : '') }}" placeholder="MM/DD/YYYY">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<button id="toggle2" class="input-group-text" type="button"><i class="fa fa-calendar-alt"></i></button>
+				</div>
+				<input id="picker2" class="form-control" type="text" name="check_out_date" value="{{ old('check_out_date', (isset($reg_data->check_out_date)) ? $reg_data->check_out_date : '') }}" placeholder="MM/DD/YYYY">
+			</div>
 		</td>
 	</tr>
 	<tr><td>&nbsp;</td></tr>
@@ -70,3 +80,5 @@
 	</tr>
 	<tr><td>&nbsp;</td></tr>
 </table>
+
+@include("partials._check_in_out_datepicker")

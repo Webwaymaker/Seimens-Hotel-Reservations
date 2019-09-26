@@ -6,8 +6,7 @@
 - Protect my admin and chris's admin accounts from change                        Added: 09/24/2019 2:58 PM
 - Add back button to add more registrations after creating a registration        Added: 09/25/2019 10:54 AM
 - Nightly CRON report is not working															Fixed: 09/26/2019 2:54 AM
-
-- Add Calendar Dropdowns on all Calendar fields
+- Add Calendar Dropdowns on all Calendar fields                                  Added: 09/26/2019 12:31 PM
 
 - Add Confirm delete everywere!!!
 
@@ -27,5 +26,5 @@
 - Give the ability to only see non reported registrations in the registrations 
   table
 
-- When sending out custom reports add an email field with them selves defaulted 
+- When sending out custom reports add an email field with themselves defaulted 
   in

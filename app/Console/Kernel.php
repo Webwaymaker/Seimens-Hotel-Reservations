@@ -21,17 +21,13 @@ class Kernel extends ConsoleKernel {
 	// Schedule -----------------------------------------------------------------
 	protected function schedule(Schedule $schedule) {
 
-		$schedule->Call(function () {
-			$path = public_path("cron_test.txt"); 
-			$fp = fopen($path, "a");
-				fwrite($fp, "CRON Job ran at " . date("Y-m-d H:i:s") . "\n");
-			fclose($fp);
-		})->everyMinute();
-
+		// This is not running correctly in production.  It will not send the 
+		// Email.  I couod not find a solution to the scheduler problem so
+		// I had to create a Cron Job that runs off of siemens.corpcoach.net/rnr
+		// Route.  I am so ashamed!!!!!!
 		$schedule->command('command:RunRegistrationReport')
 					->timezone('America/Chicago')
 					->at('01:00');
-
 	}
 
 	// Commands -----------------------------------------------------------------

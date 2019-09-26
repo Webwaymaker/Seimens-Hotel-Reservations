@@ -14,6 +14,18 @@
 					<a href="/admin/display/blackouts">Blackouts</a>
 				</div>
 			</div>
+
+			@if(Auth::user()->id == 1)
+				<div class="card mb-4">
+					<div class="card-header">Developer Tools</div>
+					<div class="card-body">
+						<a href="/managment/run_report">Run Nightly Report</a><br /><br />
+						<a href="/managment/clear_cache_all">Clear All Chaches</a><br />
+						<a href="/managment/clear_config_cache">Clear Config Chache</a><br />
+						<a href="/managment/clear_cache">Clear Chache</a>
+					</div>
+				</div>
+			@endif
 		</div>
 
 		<div class="col-md-9">

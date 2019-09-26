@@ -1,18 +1,6 @@
 <?php
 
 //------------------------------------------------------------------------------
-// Management Routes
-//------------------------------------------------------------------------------
-
-Route::middleware(['auth'])->group(function () {
-	Route::get    ('/managment/clear_cache',                  'Managment\CliCacheController@clearCache');
-	Route::get    ('/managment/clear_cache_all',              'Managment\CliCacheController@ClearCacheAll');
-	Route::get    ('/managment/clear_config_cache',           'Managment\CliCacheController@clearConfigCache');
-	Route::get    ('/managment/run_report',                   'Managment\RunNightlyReport@run');
-});
-
-
-//------------------------------------------------------------------------------
 // Project Routes
 //------------------------------------------------------------------------------
 
@@ -49,3 +37,31 @@ Route::delete ('/registration/{conf_num}/{id}/delete',       'Registrations@dest
 
 Route::get    ('/registration_login',                        'RegistrationLogin@index');
 Route::post   ('/registration_login',                        'RegistrationLogin@login');
+
+
+//------------------------------------------------------------------------------
+// Management Routes
+//------------------------------------------------------------------------------
+
+Route::middleware(['auth'])->group(function () {
+	Route::get    ('/managment/clear_cache',                  'Managment\CliCacheController@clearCache');
+	Route::get    ('/managment/clear_cache_all',              'Managment\CliCacheController@ClearCacheAll');
+	Route::get    ('/managment/clear_config_cache',           'Managment\CliCacheController@clearConfigCache');
+	Route::get    ('/managment/run_report',                   'Managment\RunNightlyReport@run');
+});
+
+
+//------------------------------------------------------------------------------
+// Clouser Routes
+//------------------------------------------------------------------------------
+
+	// For some reason the laravel scheduler is not working in production.  In
+	// order to have the nightly report created.  I had to create a Cron Job 
+	// on BlueHost to run this route every day at 5:00 AM Server Time / 
+	// 1 AM CDT.  I hate to have to do it this way but it is the only solution
+	// I can find (rnr = Run Nightly Report)
+    
+	Route::get('/rnr', function () {
+		Artisan::call('command:RunRegistrationReport');
+	});
+

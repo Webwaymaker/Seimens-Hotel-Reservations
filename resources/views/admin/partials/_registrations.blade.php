@@ -43,7 +43,7 @@
 				<div class="col-5">
 					<div class="input-group">
 						<div class="input-group-prepend">
-							<button id="toggle1" class="input-group-text" type="button"><i class="fa fa-calendar-alt"></i></button>
+							<button id="toggle1" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
 						<input id="picker1" class="form-control @error('search_check_in') is-invalid @enderror" type="text" name="search_check_in" value="{{ old("search_check_in", $search["check_in"]) }}" placeholder="Search Check In Date (MM/DD/YYYY)" >
 					</div>
@@ -55,7 +55,7 @@
 				<div class="col-5">
 					<div class="input-group">
 						<div class="input-group-prepend">
-							<button id="toggle2" class="input-group-text" type="button"><i class="fa fa-calendar-alt"></i></button>
+							<button id="toggle2" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
 						<input id="picker2" class="form-control @error('search_check_out') is-invalid @enderror" type="text" name="search_check_out" value="{{ old("search_check_out", $search["check_out"]) }}" placeholder="Search Check Out Date (MM/DD/YYYY)">
 					</div>

@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-				<div class="text-right mb-2">
-					<a href="/registration_login">Click to modify or delete an existing Registration</a>
+				<div class="text-right mb-3">
+					<a class="btn btn-primary" href="/registration_login">Modify or delete an existing Registration</a>
 				</div>
 				
 				<div class="card">
@@ -61,10 +61,4 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-	$(function () {
-		$('#datetimepicker1').datetimepicker();
-	});
-</script>
 @endsection

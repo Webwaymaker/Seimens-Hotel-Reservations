@@ -28,3 +28,5 @@
 
 - When sending out custom reports add an email field with themselves defaulted 
   in
+
+- Clean up all error messages

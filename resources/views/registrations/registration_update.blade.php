@@ -17,8 +17,10 @@
 								</li>
 								<li>
 									If you have any questions or need assistance, contact 
-									BT University at ...<br />
-									<a href="mailto: btuniversity.i-bt@siemens.com">btuniversity.i-bt@siemens.com</a>.
+									SI Academy at...<br />
+									<a href="mailto: smart.infrastructure.academy.us@siemens.com">
+										smart.infrastructure.academy.us@siemens.com
+									</a>.
 								</li>
 							</ul>
 						</div>

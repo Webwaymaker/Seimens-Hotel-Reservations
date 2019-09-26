@@ -42,13 +42,13 @@
 	<tr>
 		<td>Check In Date</td>
 		<td>
-			<input class="form-control" type="text" name="check_in_date" value="{{ old('check_in_date', (isset($reg_data->check_in_date)) ? $reg_data->check_in_date : '') }}">
+			<input class="form-control" type="text" name="check_in_date" value="{{ old('check_in_date', (isset($reg_data->check_in_date)) ? $reg_data->check_in_date : '') }}" placeholder="MM/DD/YYYY">
 		</td>
 	</tr>
 	<tr>
 		<td>Check Out Date</td>
 		<td>
-			<input class="form-control" type="text" name="check_out_date" value="{{ old('check_out_date', (isset($reg_data->check_out_date)) ? $reg_data->check_out_date : '') }}">
+			<input class="form-control" type="text" name="check_out_date" value="{{ old('check_out_date', (isset($reg_data->check_out_date)) ? $reg_data->check_out_date : '') }}" placeholder="MM/DD/YYYY">
 		</td>
 	</tr>
 	<tr><td>&nbsp;</td></tr>

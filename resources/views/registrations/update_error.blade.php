@@ -13,8 +13,8 @@
 					<p>
 						An error occurred while updating your registration please
 						contact								
-						<a href="mailto: btuniversity.i-bt@siemens.com">
-							btuniversity.i-bt@siemens.com
+						<a href="mailto: smart.infrastructure.academy.us@siemens.com">
+							smart.infrastructure.academy.us@siemens.com
 						</a>
 						for assistance.
 					</p>

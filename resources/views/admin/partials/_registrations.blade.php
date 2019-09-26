@@ -42,14 +42,14 @@
 
 			<div class="row">
 				<div class="col-5">
-					<input class="form-control @error('search_check_in') is-invalid @enderror" type="text" name="search_check_in" value="{{ old("search_check_in", $search["check_in"]) }}" placeholder="Search Check In Date">
+					<input class="form-control @error('search_check_in') is-invalid @enderror" type="text" name="search_check_in" value="{{ old("search_check_in", $search["check_in"]) }}" placeholder="Search Check In Date (MM/DD/YYYY)" >
 					@error('search_check_in')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 
 				<div class="col-5">
-					<input class="form-control @error('search_check_out') is-invalid @enderror" type="text" name="search_check_out" value="{{ old("search_check_out", $search["check_out"]) }}" placeholder="Search Check Out Date">
+					<input class="form-control @error('search_check_out') is-invalid @enderror" type="text" name="search_check_out" value="{{ old("search_check_out", $search["check_out"]) }}" placeholder="Search Check Out Date (MM/DD/YYYY)">
 					@error('search_check_out')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror

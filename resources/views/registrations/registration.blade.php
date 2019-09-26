@@ -21,14 +21,17 @@
 								</li>
 
 								<li>
-									If you are a Siemens BT or Siemens Canada employee,
-									<span style="font-weight: bold;">DO NOT</span> complete this form. Your
-									hotel reservations will automatically be made for you.
+									If you are a Siemens SI US or Canada employee attending 
+									a class at the Buffalo Grove, IL Training facility, 
+									<strong>DO NOT</strong> complete this form. Your hotel
+									reservations will automatically be made for you. 
 								</li>
 
 								<li>
-									For questions, contact BT University at
-									<a href="mailto: btuniversity.i-bt@siemens.com">btuniversity.i-bt@siemens.com</a>.
+									For questions, contact SI Academy at
+									<a href="mailto: smart.infrastructure.academy.us@siemens.com">
+										smart.infrastructure.academy.us@siemens.com
+									</a>
 								</li>
 							</ul>
 						</div>

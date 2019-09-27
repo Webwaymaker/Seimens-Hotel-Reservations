@@ -1,12 +1,42 @@
 <h2 class="mb-2">Manage Blackouts</h2>
 
-
 @if (session('status'))
 	<div class="alert alert-success" role="alert">
 		{{ session('status') }}
 	</div>
 @endif
 
+@if (session('conflicts'))
+	<div class="alert alert-danger" role="alert">
+		<h4>Warning</h4>
+		<p>
+			The following registrants have already been scheduled during this 
+			blackout.
+		</p>
+		<table class="w-100">
+			<tr>
+				<th style="width: 25%">Confirmation #</th>
+				<th style="width: 30%">Name</th>
+				<th style="width: 15%">Course</th>
+				<th style="width: 15%" class="text-center">Check In</th>
+				<th style="width: 15%" class="text-center">Check Out</th>
+			</tr>
+			@foreach(session('conflicts') as $conflict)
+				<tr>
+					<td>{{ $conflict->confirmation_num }}</td>
+					<td>
+						<a href="/registration/{{ $conflict->confirmation_num }}/{{ $conflict->id }}/edit/admin" target="_blank">					
+							{{ $conflict->first_name . " " . $conflict->last_name }}
+						</a>
+					</td>
+					<td>{{ $conflict->course_num }}</td>
+					<td class="text-center">{{ $conflict->check_in_date }}</td>
+					<td class="text-center">{{ $conflict->Check_out_date }}</td>
+				</tr>	
+			@endforeach
+		</table>
+	</div>
+@endif
 
 <div class="card mb-4">
 	<div class="card-header">Add A New Blackout</div>
@@ -25,47 +55,36 @@
 			<input type="hidden" name="current_date" value="{{ date("m/d/Y") }}" />
 			<div class="row mb-3">
 				<div class="col-4">
-
-
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<button id="toggle1" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
 						<input id="picker1" class="form-control @error('activate_date') is-invalid @enderror" type="text" name="activate_date" value="{{ old("activate_date") }}" placeholder="Activation Date (MM/DD/YYYY)">
 					</div>
-		
-
-
 					@error('activate_date')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 
 				<div class="col-4">
-
-
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<button id="toggle2" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
 						<input id="picker2" class="form-control @error('start_date') is-invalid @enderror" type="text" name="start_date" value="{{ old("start_date") }}" placeholder="Start Date (MM/DD/YYYY)">
 					</div>
-	
-
 					@error('start_date')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 
 				<div class="col-4">
-
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<button id="toggle3" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
 						<input id="picker3" class="form-control @error('end_date') is-invalid @enderror" type="text" name="end_date" value="{{ old("end_date") }}" placeholder="End Date (MM/DD/YYYY)">
 					</div>
-		
 					@error('end_date')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
@@ -86,7 +105,6 @@
 		</form>
 	</div>
 </div>
-
 
 <div class="card mb-4">
 	<div class="card-header">Blackout Dates</div>

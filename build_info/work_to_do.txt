@@ -7,8 +7,7 @@
 - Add back button to add more registrations after creating a registration        Added: 09/25/2019 10:54 AM
 - Nightly CRON report is not working															Fixed: 09/26/2019 2:54 AM
 - Add Calendar Dropdowns on all Calendar fields                                  Added: 09/26/2019 12:31 PM
-
-- Add Confirm delete everywere!!!
+- Add Confirm delete everywere!!!                                                Added: 09/27/2019 7:01 AM
 
 - Fix conflicts not showing when createing a Blockout
 

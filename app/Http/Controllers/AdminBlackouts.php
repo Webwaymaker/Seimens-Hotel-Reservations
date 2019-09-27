@@ -47,7 +47,7 @@ class AdminBlackouts extends Controller {
 
 		//Check for registration between blackout dates
 		$conflicts = Registration::whereBetween("check_in_date", [$start_date, $end_date])
-					 				    ->orWhereBetween("check_out_date", [$start_date, $end_date])
+										 ->orWhereBetween("check_out_date", [$start_date, $end_date])
 										 ->get();
 
 		//Flash in conflicts if they exist

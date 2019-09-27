@@ -81,4 +81,4 @@
 	<tr><td>&nbsp;</td></tr>
 </table>
 
-@include("partials._check_in_out_datepicker")
+@include("partials._datepicker_check_in_out")

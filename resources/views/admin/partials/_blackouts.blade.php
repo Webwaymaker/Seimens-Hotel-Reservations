@@ -25,21 +25,47 @@
 			<input type="hidden" name="current_date" value="{{ date("m/d/Y") }}" />
 			<div class="row mb-3">
 				<div class="col-4">
-					<input class="form-control @error('activate_date') is-invalid @enderror" type="text" name="activate_date" value="{{ old("activate_date") }}" placeholder="Activation Date">
+
+
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<button id="toggle1" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
+						</div>
+						<input id="picker1" class="form-control @error('activate_date') is-invalid @enderror" type="text" name="activate_date" value="{{ old("activate_date") }}" placeholder="Activation Date (MM/DD/YYYY)">
+					</div>
+		
+
+
 					@error('activate_date')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 
 				<div class="col-4">
-					<input class="form-control @error('start_date') is-invalid @enderror" type="text" name="start_date" value="{{ old("start_date") }}" placeholder="Blackout Start Date">
+
+
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<button id="toggle2" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
+						</div>
+						<input id="picker2" class="form-control @error('start_date') is-invalid @enderror" type="text" name="start_date" value="{{ old("start_date") }}" placeholder="Start Date (MM/DD/YYYY)">
+					</div>
+	
+
 					@error('start_date')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
 				</div>
 
 				<div class="col-4">
-					<input class="form-control @error('end_date') is-invalid @enderror" type="text" name="end_date" value="{{ old("end_date") }}" placeholder="Blackout End Date">
+
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<button id="toggle3" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
+						</div>
+						<input id="picker3" class="form-control @error('end_date') is-invalid @enderror" type="text" name="end_date" value="{{ old("end_date") }}" placeholder="End Date (MM/DD/YYYY)">
+					</div>
+		
 					@error('end_date')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
@@ -81,8 +107,13 @@
 						<td class="text-center">{{ $blackout->start_at }}</td>
 						<td class="text-center">{{ $blackout->end_at }}</td>
 						<td class="text-center">
-							<a href="/admin/blackout/{{ $blackout->access_token }}/{{ $blackout->id }}/delete">
-								<i class="fas fa-trash"></i>
+							<a class="delete-link"
+								data-toggle = "modal" 
+								data-target = "#model-blackout-delete"
+								data-range  = "{{ $blackout->start_at }} through {{ $blackout->end_at }}"
+								data-route  = "/admin/blackout/{{ $blackout->access_token }}/{{ $blackout->id }}/delete" 
+								href        = "#">
+									<i class="fas fa-trash"></i>
 							</a>
 						</td>
 					</tr>
@@ -91,7 +122,7 @@
 				<tr><td>&nbsp</td></tr>
 				<tr>
 					<td class="text-danger text-center" colspan="5">
-						--- No active Blackout dates Were Found ---
+						--- No active Blackout Dates Were Found ---
 					</td>
 				</tr>
 				<tr><td>&nbsp</td></tr>
@@ -99,3 +130,9 @@
 		</table>
 	</div>
 </div>
+
+@include("partials._datepicker_blackout")
+
+@section('model_2')
+	@include('models.model_confirmation_blackout_delete')
+@endsection

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 				<div class="text-right mb-3">
-					<a class="btn btn-primary" href="/registration_login">Modify or delete an existing Registration</a>
+					<a class="btn btn-primary" href="/registration_login">Modify or Cancel an existing Registration</a>
 				</div>
 				
 				<div class="card">

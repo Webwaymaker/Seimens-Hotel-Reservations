@@ -131,8 +131,6 @@
 		}}
 	</div>
 
-
-
 	<div class="card mb-4">
 		<div class="card-header">Reports</div>
 		<div class="card-body">
@@ -149,4 +147,4 @@
 	</div>
 </form>
 
-@include("partials._check_in_out_datepicker")
+@include("partials._datepicker_check_in_out")

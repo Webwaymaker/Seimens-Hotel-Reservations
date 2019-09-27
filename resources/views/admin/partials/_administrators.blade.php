@@ -54,14 +54,24 @@
 					<td>{{ $user->email }}</td>
 					<td class="text-center">
 						@if($user->protect_admin_reset_password == FALSE)
-							<a href="/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset">
-								<i class="fas fa-key"></i>
+							<a class="reset-link"
+								data-toggle = "modal" 
+								data-target = "#model-password-reset"
+								data-email  = {{ $user->email }} 
+								data-route  = "/admin/password/{{ $user->access_token }}/{{ $user->id }}/reset" 
+								href        = "#">
+									<i class="fas fa-key"></i>
 							</a>
 						@endif
 						&nbsp;
 						@if($user->protect_admin_delete == FALSE)
-							<a href="/admin/{{ $user->access_token }}/{{ $user->id }}/delete">
-								<i class="fas fa-trash"></i>
+							<a class="delete-link"
+								data-toggle = "modal" 
+								data-target = "#model-admin-delete"
+								data-name   = "{{ $user->name }}"
+								data-route  = "/admin/{{ $user->access_token }}/{{ $user->id }}/delete"" 
+								href        = "#">
+									<i class="fas fa-trash"></i>
 							</a>
 						@endif
 					</td>
@@ -70,3 +80,9 @@
 		</table>
 	</div>
 </div>
+
+@section('model_2')
+	@include('models.model_confirmation_password_reset')
+	@include('models.model_confirmation_admin_delete')
+@endsection
+

@@ -11,21 +11,27 @@
 				timepicker: false,
 				datepicker: true,
 				format: 'MM/DD/YYYY',
-				weeks: true,
 			})
 			$('#toggle1').on('click', function() {
 				$('#picker1').datetimepicker('toggle')
 			})
 
-
 			$('#picker2').datetimepicker({
 				timepicker: false,
 				datepicker: true,
 				format: 'MM/DD/YYYY',
-				weeks: true,
 			})
 			$('#toggle2').on('click', function() {
 				$('#picker2').datetimepicker('toggle')
+			})
+
+			$('#picker3').datetimepicker({
+				timepicker: false,
+				datepicker: true,
+				format: 'MM/DD/YYYY',
+			})
+			$('#toggle3').on('click', function() {
+				$('#picker3').datetimepicker('toggle')
 			})
 	</script>
 @endsection

@@ -77,6 +77,12 @@
         </main>
 	 </div>
 	 
+	 @yield('model_1')
+	 
+	 @yield('model_2')
+
+	 @yield('model_3')
+
 	 @yield('bottom_scripts')
 </body>
 </html>

@@ -22,7 +22,9 @@
 							<a href="/managment/clear_cache_all">Clear All Chaches</a><br />
 							<a href="/managment/clear_config_cache">Clear Config Chache</a><br />
 							<a href="/managment/clear_cache">Clear Chache</a><br /><br />
-							<a href="/managment/run_report">Run Nightly Report</a>
+							<a href="#" data-toggle="modal" data-target="#model-run-report">
+								Run Nightly Report
+							</a>						
 						</div>
 					</div>
 				@endif
@@ -44,4 +46,8 @@
 			</div>
 		</div>
 	</div> 
+@endsection
+
+@section('model_1')
+	@include('models.model_confirmation_run_report')
 @endsection

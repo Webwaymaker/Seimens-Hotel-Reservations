@@ -45,8 +45,13 @@
 				<tr>
 					<td>{{ $report_to->email }}</td>
 					<td class="text-center">
-						<a href="/admin/report_to/{{ $report_to->access_token }}/{{ $report_to->id }}/delete">
-							<i class="fas fa-trash"></i>
+						<a class="delete-link"
+							data-toggle = "modal" 
+							data-target = "#model-reportTo-delete"
+							data-email  = {{ $report_to->email }} 
+							data-route  = "/admin/report_to/{{ $report_to->access_token }}/{{ $report_to->id }}/delete" 
+							href        = "#">
+								<i class="fas fa-trash"></i>
 						</a>
 					</td>
 				</tr>
@@ -54,3 +59,7 @@
 		</table>
 	</div>
 </div>
+
+@section('model_2')
+	@include('models.model_confirmation_reportto_delete')
+@endsection

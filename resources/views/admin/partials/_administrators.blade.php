@@ -81,7 +81,7 @@
 	</div>
 </div>
 
-@section('model_2')
+@section('model_1')
 	<!-- Reset Admin Password Confirmation Model -->
 	<div id="model-password-reset" class="modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
@@ -94,7 +94,7 @@
 				</div>
 				<div class="modal-body text-center">
 					<p>
-						Are you sure you would like to send a password reset email to
+						Are you sure you would like to send a password reset email to ...
 						<div id="reset-email-address" class="font-weight-bold"></div>
 					</p>
 				</div>
@@ -103,7 +103,7 @@
 						@csrf
 						<button class="btn btn-danger" type="submit">Yes</button>
 					</form>
-					<button class="btn btn-primary" data-dismiss="modal" type="button">No</button>
+					<button class="btn btn-secondary" data-dismiss="modal" type="button">No</button>
 				</div>
 			</div>
 		</div>
@@ -121,7 +121,7 @@
 				</div>
 				<div class="modal-body text-center">
 					<p>
-						Are you sure you would like to delete the Administrator Account for
+						Are you sure you would like to delete the Administrator Account for ...
 						<div id="delete-admin-name" class="font-weight-bold"></div>
 						
 					</p>
@@ -131,7 +131,7 @@
 						@csrf
 						<button class="btn btn-danger" type="submit">Yes</button>
 					</form>
-					<button class="btn btn-primary" data-dismiss="modal" type="button">No</button>
+					<button class="btn btn-secondary" data-dismiss="modal" type="button">No</button>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-<h2 class="mb-2">Registrations & Reports</h2>
+<h2 class="mb-2">Reservation & Reports</h2>
 	
 
 @if (session('status'))
@@ -12,7 +12,7 @@
 	@csrf
 
 	<div class="card mb-4">
-		<div class="card-header">Search Registration</div>
+		<div class="card-header">Search Reservations</div>
 		<div class="card-body">
 			<p>
 				To search the Registration list, please enter your search criteria 
@@ -62,20 +62,15 @@
 					@error('search_check_out')
 						<small class="text-danger">{{ $message }}</small>
 					@enderror
-				</div>
-		
-				<div class="col-auto">
-					<a class="btn btn-success" style="width: 100px;" href="/admin/display/registrations">Reset</a>
-				</div>
+				</div>		
 			</div>
 		</div>
 	</div>
 
-
 	<div class="card mb-3">
 		<div class="card-header">
 			<div class="row">
-				<div class="col-6">Registration List</div>
+				<div class="col-6">Reservation List</div>
 				<div class="col-6 text-right">
 					Showing {{ $registrations->firstItem() }} - {{ $registrations->lastItem() }}
 					of {{ $registrations->total() }}
@@ -118,17 +113,24 @@
 		</div>
 	</div>
 
-	<div class="d-flex justify-content-end mb-4">
-		{{ 
-			$registrations->onEachSide(2)
-							->appends([
-								"fn" => $search["first_name"],
-								"ln" => $search["last_name"],
-								"ci" => strtotime($search["check_in"]),
-								"co" => strtotime($search["check_out"]),
-							])
-							->links() 
-		}}
+	<div class="row">
+		<div class="col-6">
+			<a class="btn btn-primary" href="/admin/display/registrations">
+				Reset Reservation List
+			</a>
+		</div>
+		<div class="col-6 d-flex justify-content-end mb-4">
+			{{ 
+				$registrations->onEachSide(2)
+								->appends([
+									"fn" => $search["first_name"],
+									"ln" => $search["last_name"],
+									"ci" => strtotime($search["check_in"]),
+									"co" => strtotime($search["check_out"]),
+								])
+								->links() 
+			}}
+		</div>
 	</div>
 
 	<div class="card mb-4">
@@ -141,7 +143,7 @@
 			</p>
 
 			<div class="text-right">
-				<button class="btn btn-primary" type="submit" name="btn_report">Download Report</div>
+				<button class="btn btn-primary" type="submit" name="btn_report">Download Report</button>
 			</div>
 		</div>
 	</div>

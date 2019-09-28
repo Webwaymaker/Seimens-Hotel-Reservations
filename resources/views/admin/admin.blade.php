@@ -4,11 +4,27 @@
 	<div class="container">
 		<div class="row justify-content-center">
 
-			<div class="col-md-3">
+			<div class="col-9">
+				@if ($display == "administrators")
+					@include("admin.partials._administrators")
+
+				@elseif ($display == "report_tos")
+					@include("admin.partials._report_tos")
+
+				@elseif ($display == "blackouts")
+					@include("admin.partials._blackouts")
+
+				@else
+					@include("admin.partials._registrations")
+				@endif
+			</div>
+		
+			<div class="col-3">
+				<h2 class="mb-2">&nbsp;</h2>
 				<div class="card mb-4">
 					<div class="card-header">Manage</div>
 					<div class="card-body">
-						<a href="/admin/display/registrations">Registrations & Reports</a><br />
+						<a href="/admin/display/registrations">Reservations & Reports</a><br />
 						<a href="/admin/display/administrators">Administrators</a><br />
 						<a href="/admin/display/report_tos">Report-Tos</a><br />
 						<a href="/admin/display/blackouts">Blackouts</a>
@@ -28,27 +44,13 @@
 						</div>
 					</div>
 				@endif
-			</div>
-
-			<div class="col-md-9">
-				@if ($display == "administrators")
-					@include("admin.partials._administrators")
-
-				@elseif ($display == "report_tos")
-					@include("admin.partials._report_tos")
-
-				@elseif ($display == "blackouts")
-					@include("admin.partials._blackouts")
-
-				@else
-					@include("admin.partials._registrations")
-				@endif
-			</div>
+			</div>	
+	
 		</div>
 	</div> 
 @endsection
 
-@section('model_1')
+@section('model_2')
 	<div id="model-run-report" class="modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -69,7 +71,7 @@
 						@csrf
 						<button type="submit" class="btn btn-danger">Yes</button>
 					</form>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>

@@ -10,20 +10,17 @@
 - Add Confirm delete everywere!!!                                                Added: 09/27/2019 7:01 AM
 - Fix conflicts not showing when createing a Blockout                            Fixed: 09/27/2019 8:18 AM
 - Add Blackout functionality when registering                                    Added: 09/27/2019 9:44 PM
-
-- Add where to send users once they have canceled an order
+- Add where to send users once they have canceled an order                       Added: 09/27/2019 11:42 PM 
 	- User  = Registration page
 	- Admin = Admin/registrations
+- After reseting an admin password through the reset email need to redirect      Added: 09/27/2019 11:50 PM
+  back to admin/administrators
+- Add meeting background to the site.                                            Added: 09/28/2019 3:15 AM 
 
-- After reseting an admin password through the reset email need to redirect back 
-  to admin/administrators
+- Give the ability to only see non reported registrations in the 
+  registrations table
 
-- Add meeting background to the site.
-
-- Give the ability to only see non reported registrations in the registrations 
-  table
-
-- When sending out custom reports add an email field with themselves defaulted 
-  in
+- When sending out custom reports add an email field with themselves 
+  defaulted in
 
 - Clean up all error messages

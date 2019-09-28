@@ -1,0 +1,12 @@
+--------------------------------------------------------------------------------
+ Image Royalty Information
+--------------------------------------------------------------------------------
+
+	siemens_logo.png
+		- Provided by the customer
+
+	site_bqckground.jpg
+		- Provided by Pexels 
+			- Site indicates that the image os oyalty free.
+			- URL To Image
+				- https://www.pexels.com/photo/three-white-ceramic-pots-with-green-leaf-plants-near-open-notebook-with-click-pen-on-top-796602/

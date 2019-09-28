@@ -13,6 +13,7 @@
 						Your Reservation has been canceled.&nbsp; Confirmation Number: 
 						<strong>{{ $registration->confirmation_num }}<strong>
 					</p>
+					@include('partials._back_buttons')
 				</div>					
 			</div>
 		</div>

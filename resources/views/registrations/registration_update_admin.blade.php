@@ -63,7 +63,7 @@
 				</div>
 				<div class="modal-body text-center">
 				<p>
-					Are you sure you would like to delete this Reservation for
+					Are you sure you would like to delete this Reservation for ...
 					<div id="delete-registration" class="font-weight-bold"></div>
 				</p>
 				</div>

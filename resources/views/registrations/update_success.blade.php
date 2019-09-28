@@ -26,7 +26,9 @@
 						<a href="/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit">
 							Here
 						</a>.	
-					</p>	
+					</p>
+					
+					@include('partials._back_buttons')
 				</div>					
 			</div>
 		</div>

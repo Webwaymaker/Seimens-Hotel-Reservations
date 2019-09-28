@@ -7,7 +7,7 @@
 				<div class="card">
 					<div class="card-header">Hotel Reservations</div>
 					<div class="card-body">
-						<div class="alert alert-info">
+						<div class="alert alert-success">
 							<h3>Important</h3>
 							<ul>
 								<li>

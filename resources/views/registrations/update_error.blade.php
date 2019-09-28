@@ -19,6 +19,7 @@
 						for assistance.
 					</p>
 					
+					@include('partials._back_buttons')
 				</div>					
 			</div>
 		</div>

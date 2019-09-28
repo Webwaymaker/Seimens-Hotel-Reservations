@@ -10644,6 +10644,83 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background: url("/images/site_background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.card-header {
+  font-size: 1em;
+  font-weight: bold;
+  color: #039999;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-primary {
+  background-color: #039999;
+}
+
+.btn-primary:hover {
+  background-color: rgba(0, 153, 153, 0.8);
+}
+
+.page-item.active .page-link {
+  color: #fff !important;
+  background-color: #039999 !important;
+  border-color: #039999 !important;
+}
+
+.page-link {
+  color: #039999 !important;
+}
+
+.fas {
+  color: #039999 !important;
+}
+
+.card a {
+  color: #039999 !important;
+}
+
+.card a:hover {
+  text-decoration: none !important;
+  letter-spacing: 0.03em;
+}
+
+.alert.alert-success {
+  background-color: rgba(215, 243, 227, 0.9) !important;
+}
+
+.alert.alert-danger {
+  background-color: rgba(249, 214, 213, 0.9) !important;
+}
+
+.alert.alert-danger a {
+  color: darkred !important;
+}
+
+.alert.alert-danger a:hover {
+  text-decoration: none !important;
+  letter-spacing: 0.03em;
+}
+
+.modal-footer button {
+  width: 75px !important;
+}
+
+input,
+textarea {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Input Placeholder Styles ------------------------------------------------- */
+
+/* See: https://stackoverflow.com/a/20774043 */
+
 /* WebKit, Blink, Edge */
 
 .form-control::-webkit-input-placeholder {

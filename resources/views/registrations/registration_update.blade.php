@@ -71,7 +71,7 @@
 				</div>
 				<div class="modal-body text-center">
 					<p>
-						Are you sure you would like to delete this Reservation for
+						Are you sure you would like to delete this Reservation for ...
 						<div id="delete-registration" class="font-weight-bold"></div>
 					</p>
 				</div>
@@ -81,7 +81,7 @@
 						@method("delete")
 						<button class="btn btn-danger" type="submit">Yes</button>
 					</form>
-					<button class="btn btn-primary" data-dismiss="modal" type="button">No</button>
+					<button class="btn btn-secondary" data-dismiss="modal" type="button">No</button>
 				</div>
 			</div>
 		</div>

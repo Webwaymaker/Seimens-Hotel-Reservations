@@ -60,7 +60,7 @@
 	</div>
 </div>
 
-@section('model_2')
+@section('model_1')
 	<div id="model-password-reset" class="modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -72,8 +72,8 @@
 				</div>
 				<div class="modal-body text-center">
 					<p>
-						Are you sure you would like to send a password reset email to
-						<div id="reset-email-address" class="font-weight-bold"></div>?
+						Are you sure you would like to send a password reset email to ...
+						<div id="reset-email-address" class="font-weight-bold"></div>
 					</p>
 				</div>
 				<div class="modal-footer">
@@ -81,7 +81,7 @@
 						@csrf
 						<button class="btn btn-danger" type="submit">Yes</button>
 					</form>
-					<button class="btn btn-primary" data-dismiss="modal" type="button">No</button>
+					<button class="btn btn-secondary" data-dismiss="modal" type="button">No</button>
 				</div>
 			</div>
 		</div>

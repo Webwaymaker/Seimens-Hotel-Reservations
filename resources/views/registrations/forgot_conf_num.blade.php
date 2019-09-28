@@ -48,7 +48,8 @@
 
 							<tr>
 								<td class="text-right" colspan="2">
-									<button class="btn btn-primary" type="submit">Recover</div>
+									<button class="btn btn-primary" type="submit">Recover</button>
+									<a class="btn btn-secondary" href="/registration_login">Back</a>
 								</td>
 							</tr>
 						</table>

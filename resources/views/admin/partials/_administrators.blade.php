@@ -82,7 +82,73 @@
 </div>
 
 @section('model_2')
-	@include('models.model_confirmation_password_reset')
-	@include('models.model_confirmation_admin_delete')
+	<!-- Reset Admin Password Confirmation Model -->
+	<div id="model-password-reset" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Confirmation</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<p>
+						Are you sure you would like to send a password reset email to
+						<div id="reset-email-address" class="font-weight-bold"></div>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<form id="reset-confirm-form" action="/managment/run_report" method="GET">
+						@csrf
+						<button class="btn btn-danger" type="submit">Yes</button>
+					</form>
+					<button class="btn btn-primary" data-dismiss="modal" type="button">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<!-- Delete Admin Confirmation Model -->
+	<div id="model-admin-delete" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Confirmation</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<p>
+						Are you sure you would like to delete the Administrator Account for
+						<div id="delete-admin-name" class="font-weight-bold"></div>
+						
+					</p>
+				</div>
+				<div class="modal-footer">
+					<form id="delete-admin-form" method="GET" action="">
+						@csrf
+						<button class="btn btn-danger" type="submit">Yes</button>
+					</form>
+					<button class="btn btn-primary" data-dismiss="modal" type="button">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+			$('.reset-link').on("click", function() {
+				$('#reset-confirm-form').attr('action', this.dataset.route);
+				$('#reset-email-address').text(this.dataset.email)
+			});
+
+			$('.delete-link').on("click", function() {
+				$('#delete-admin-form').attr('action', this.dataset.route);
+				$('#delete-admin-name').text(this.dataset.name)
+			});
+		});
+	</script>
 @endsection
 

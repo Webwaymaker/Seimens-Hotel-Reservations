@@ -1,17 +1,13 @@
 @extends('layouts.app')
  
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-				<div class="text-right mb-3">
-					<a class="btn btn-primary" href="/registration_login">Modify or Cancel an existing Registration</a>
-				</div>
-				
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">				
 				<div class="card">
-					<div class="card-header">Hotel Registration</div>
+					<div class="card-header">Hotel Reservations</div>
 					<div class="card-body">
-					  <div class="alert alert-info">
+						<div class="alert alert-info">
 							<h3>Important</h3>
 							<ul>
 								<li>
@@ -35,30 +31,24 @@
 								</li>
 							</ul>
 						</div>
-										  
-						@if ($errors->any())
-							<div class="alert alert-danger">
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-						@endif
-
+											
 						<form method="POST" action="/registration">
 							@csrf
 
 							@include('registrations.partials._registration_form')
 
 							<div class="text-right">
-								<button class="btn btn-primary" type="submit" name="btn_edit">Register</button> 
+								<button class="btn btn-primary" type="submit" name="btn_edit">Submit</button> 
 							</div>
 						</form>
-					 </div>
-					 
-            </div>
-        </div>
-    </div>
-</div>
+					</div>	
+				</div>
+			</div>
+			
+			@if(!empty($blackout_dates[0]))
+				@include('registrations.partials._blackout_dates_card')
+			@endif
+
+		</div>
+	</div>
 @endsection

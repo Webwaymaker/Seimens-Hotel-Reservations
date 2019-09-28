@@ -5,21 +5,21 @@
 	<div class="row justify-content-center">
 		<div class="col-md-8">
 			<div class="card">
-				<div class="card-header">Edit / Cancel Registration</div>
+				<div class="card-header">My Reservations</div>
 
 				<div class="card-body">
-					<h3>Registration Login</h3>
+					<h3>My Reservations Login</h3>
 
 					<p>
 						Please enter your the email address you used when creating your 
-						registration and the registration's confirmation number below. 
+						Reservation and the Reservations's confirmation number below. 
 						&nbsp; If you do not remember your confirmation number please 
 						click  "Forgot Confirmation Number" to have it emailed to you.
 					</p>
 					
 					<p>
-						<strong>Note:</strong> Registrations may not be available to 
-						modify within 24 hours of the registration's check in date. 
+						<strong>Note:</strong> A reservation may not be available to 
+						modify within 24 hours of the Reservations's check in date. 
 					</p>
 
 					@if ($errors->any())
@@ -35,7 +35,7 @@
 					@if(isset($invalid))
 						<div class="alert alert-danger mb-4">
 							The email and/or confirmation number you entered is not a 
-							match for a registration.  If you are unsure of your 
+							match for a Reservation.  If you are unsure of your 
 							confirmation number please click <a href="/forgot">Here</a>
 						</div>	
 					@endif

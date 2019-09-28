@@ -8,10 +8,8 @@
 - Nightly CRON report is not working															Fixed: 09/26/2019 2:54 AM
 - Add Calendar Dropdowns on all Calendar fields                                  Added: 09/26/2019 12:31 PM
 - Add Confirm delete everywere!!!                                                Added: 09/27/2019 7:01 AM
-
-- Fix conflicts not showing when createing a Blockout
-
-- Add Blackout functionality when registering
+- Fix conflicts not showing when createing a Blockout                            Fixed: 09/27/2019 8:18 AM
+- Add Blackout functionality when registering                                    Added: 09/27/2019 9:44 PM
 
 - Add where to send users once they have canceled an order
 	- User  = Registration page

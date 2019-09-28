@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\RegistrationConfMail;
+use App\Blackout_date;
 use App\Registration;
+use App\Mail\RegistrationConfMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -15,19 +16,22 @@ class Registrations extends Controller {
 
 	// Index --------------------------------------------------------------------
 	public function index() {
-		return view('registrations.registration');
+		$blackout_dates = $this->GetBlackoutDates();
+		return view('registrations.registration', compact(["blackout_dates"]));
 	}
 
 	// Show ---------------------------------------------------------------------
 	public function show($conf_num, $id) {
-		$reg_data = $this->GetRegistrationData($conf_num, $id);
-		return view('registrations.registration_update', compact('reg_data', 'conf_num', 'id'));
+		$reg_data       = $this->GetRegistrationData($conf_num, $id);
+		$blackout_dates = $this->GetBlackoutDates();
+		return view('registrations.registration_update', compact('reg_data', 'blackout_dates', 'conf_num', 'id'));
 	}
 
 	// Show Admin ---------------------------------------------------------------
 	public function showAdmin($conf_num, $id) {
-		$reg_data = $this->GetRegistrationData($conf_num, $id);
-		return view('registrations.registration_update_admin', compact('reg_data', 'conf_num', 'id'));
+		$reg_data       = $this->GetRegistrationData($conf_num, $id);
+		$blackout_dates = $this->GetBlackoutDates();
+		return view('registrations.registration_update_admin', compact('reg_data', 'blackout_dates', 'conf_num', 'id'));
 	}
 
 	// Store --------------------------------------------------------------------
@@ -75,6 +79,16 @@ class Registrations extends Controller {
 // Private Methods
 //------------------------------------------------------------------------------
 
+	// Get Blackout Dates -------------------------------------------------------
+	private function GetBlackoutDates() {
+		$current_date = date("Y-m-d H:i:s");
+		$blackouts    = Blackout_date::where('active_at', '<', $current_date)
+											  ->where('end_at', '>', $current_date)
+											  ->orderBy('start_at', 'asc')
+										     ->get();
+		return $blackouts;
+	}
+
 	// Get Field Validation Array  ----------------------------------------------
 	private function GetFieldValidationArr() {
 		return [
@@ -84,10 +98,35 @@ class Registrations extends Controller {
 			'mobile_num'     => 'required|max:20',
 			'location'       => 'required|max:50',
 			'course_num'     => 'required|max:25',
-			'check_in_date'  => 'required|date',
-			'check_out_date' => 'required|date|after_or_equal:check_in_date',
 			'handicapped'    => 'nullable|integer',
-			'special_req'    => 'nullable|max:1000',
+			'special_req'    => 'nullable|max:3000',
+			'check_in_date'  => [
+				'required',
+				'date',
+				function($attribute, $value, $fail) {
+					$check_in = date("Y-m-d H:i:s", strtotime($value));
+					$blackout = Blackout_date::where("start_at", "<=", $check_in)
+													 ->where("end_at",   ">=", $check_in)
+													 ->get();
+					if(!empty($blackout[0])) {
+						$fail("This Ckeck In Date falls within one of the Reserved date ranges.");
+					}
+				}
+			],
+			'check_out_date' => [
+				'required',
+				'date',
+				'after_or_equal:check_in_date',
+				function($attribute, $value, $fail) {
+					$check_out = date("Y-m-d H:i:s", strtotime($value));
+					$blackout  = Blackout_date::where("start_at", "<=", $check_out)
+													  ->where("end_at",   ">=", $check_out)
+													  ->get();
+					if(!empty($blackout[0])) {
+						$fail("This Ckeck Out Date falls within one of the Reserved date ranges.");
+					}
+				}
+			],
 		];
 	}
 

@@ -5,13 +5,13 @@
 	<div class="row justify-content-center">
 		<div class="col-md-8">
 			<div class="card">
-				<div class="card-header">Hotel Registration</div>
+				<div class="card-header">Hotel Reservations</div>
 
 				<div class="card-body">
 					<h3>Success</h3>
 
 					<p>
-						Your registration was successfully updated.
+						Your Reservation was successfully updated.
 					</p>
 					<p>
 						A new confirmation email has been sent to you.  As a reminder 
@@ -22,7 +22,7 @@
 						Your confirmation number is still:  <strong>{{ $registration->confirmation_num }}</strong>
 					</p>
 					<p>
-						If you would like to continue modify or cancel your registration please click 
+						If you would like to continue to modify or cancel your Reservation please click 
 						<a href="/registration/{{ $registration->confirmation_num }}/{{ $registration->id }}/edit">
 							Here
 						</a>.	

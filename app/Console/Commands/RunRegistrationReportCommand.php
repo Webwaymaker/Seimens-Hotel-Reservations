@@ -48,7 +48,7 @@ $eamil_tos = ["kevin@webwaymaker.com", "accounts@webwaymaker.com"];  // For debu
 		Mail::to($eamil_tos)->send(new RegistrationReportMail($registrations));
 
 		// Set Report_at on databse table to current date for all registrations reported
-//		Registration::whereNull('reported_at')->update(['reported_at' => Carbon::now()]);
+		Registration::whereNull('reported_at')->update(['reported_at' => Carbon::now()]);
 
 		//Build Cron Log entry and post
 		$log_message  = "Cron: Nightly Report Run\n";

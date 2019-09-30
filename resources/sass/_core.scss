@@ -1,51 +1,21 @@
+//******************************************************************************
+// core.scss
+//******************************************************************************
+
 body {
-//	background: url("/images/armchairs-blur-chair-296883.jpg") no-repeat center center fixed !important;
-//	background: url("/images/adult-indoors-meeting-1595386.jpg") no-repeat center center fixed !important;
-	background: url("/images/site_background.jpg") no-repeat center center fixed;
+	background: url("/images/site_background.jpg") no-repeat center center fixed;	
 	background-size: cover;
- }
-
- .card {
-	background-color: rgba(255, 255, 255, 0.80);
- }
-
- .card-header {
-	font-size: 1em;
-	font-weight: bold;
-	color: #039999;
-	background-color: rgba(255, 255, 255, 0.85);
- }
-
- .btn-primary {
-	 background-color: #039999;
- }
- 
- .btn-primary:hover {
-	 background-color: rgba(0, 153, 153, 0.80);
- }
-
-.page-item.active .page-link {
-	color:#fff !important;
-	background-color: #039999 !important;
-	border-color: #039999 !important;
 }
 
-.page-link {
-	color:#039999 !important;
+input, 
+textarea {
+	background-color: rgba(255, 255, 255, 0.80) !important;
 }
 
-.fas {
-	color:#039999 !important;
-}
 
-.card a {
-	color:#039999 !important;
-}
-
-.card a:hover {
-	text-decoration: none !important;
-	letter-spacing: .03em;
-}
+//------------------------------------------------------------------------------
+// Bootstrap Alert Overrides
+//------------------------------------------------------------------------------
 
 .alert.alert-success {
 	background-color: rgba(215, 243, 227, 0.90) !important;
@@ -64,10 +34,81 @@ body {
 	letter-spacing: .03em;
 }
 
+
+//------------------------------------------------------------------------------
+// Bootstrap Card Overrides
+//------------------------------------------------------------------------------
+
+.card {
+	background-color: rgba(255, 255, 255, 0.80);
+}
+
+.card-header {
+	font-size: 1em;
+	font-weight: bold;
+	color: #039999;
+	background-color: rgba(255, 255, 255, 0.85);
+}
+
+.card a {
+	color:#039999 !important;
+}
+
+.card a:hover {
+	text-decoration: none;
+	letter-spacing: .03em;
+}
+
+
+//------------------------------------------------------------------------------
+// Bootstrap Modal Overrides
+//------------------------------------------------------------------------------
+
 .modal-footer button {
 	width: 75px !important;
 }
 
-input, textarea {
-	background-color: rgba(255, 255, 255, 0.80) !important;
+
+//------------------------------------------------------------------------------
+// Bootstrap Modal Overrides
+//------------------------------------------------------------------------------
+
+
+a.btn  {
+	color: #fff !important;
+	letter-spacing: 0em !important;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #039999;
+}
+
+.btn-primary:hover {
+	color: #fff;
+	background-color: rgba(0, 153, 153, 0.80);
+}
+
+
+//------------------------------------------------------------------------------
+// Laravel Pagination Overrides
+//------------------------------------------------------------------------------
+
+.page-item.active .page-link {
+	color:#fff !important;
+	background-color: #039999 !important;
+	border-color: #039999 !important;
+}
+
+.page-link {
+	color:#039999 !important;
+}
+
+
+//------------------------------------------------------------------------------
+// Font Awsome Overrides
+//------------------------------------------------------------------------------
+
+.fas {
+	color:#039999 !important;
 }

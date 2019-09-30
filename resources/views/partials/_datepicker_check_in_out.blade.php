@@ -12,6 +12,8 @@
 				datepicker: true,
 				format: 'MM/DD/YYYY',
 				weeks: true,
+				scrollMonth: false,
+
 			})
 			$('#toggle1').on('click', function() {
 				$('#picker1').datetimepicker('toggle')
@@ -22,19 +24,10 @@
 				datepicker: true,
 				format: 'MM/DD/YYYY',
 				weeks: true,
+				scrollMonth: false,
 			})
 			$('#toggle2').on('click', function() {
 				$('#picker2').datetimepicker('toggle')
-			})
-
-			$('#picker3').datetimepicker({
-				timepicker: false,
-				datepicker: true,
-				format: 'MM/DD/YYYY',
-				weeks: true,
-			})
-			$('#toggle3').on('click', function() {
-				$('#picker3').datetimepicker('toggle')
 			})
 	</script>
 @endsection

@@ -11,6 +11,7 @@
 				timepicker: false,
 				datepicker: true,
 				format: 'MM/DD/YYYY',
+				scrollMonth: false,
 			})
 			$('#toggle1').on('click', function() {
 				$('#picker1').datetimepicker('toggle')
@@ -20,6 +21,7 @@
 				timepicker: false,
 				datepicker: true,
 				format: 'MM/DD/YYYY',
+				scrollMonth: false,
 			})
 			$('#toggle2').on('click', function() {
 				$('#picker2').datetimepicker('toggle')
@@ -29,6 +31,7 @@
 				timepicker: false,
 				datepicker: true,
 				format: 'MM/DD/YYYY',
+				scrollMonth: false,
 			})
 			$('#toggle3').on('click', function() {
 				$('#picker3').datetimepicker('toggle')

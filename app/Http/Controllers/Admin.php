@@ -22,8 +22,11 @@ class Admin extends Controller {
 	private $search = [
 		'first_name' => NULL, 
 		'last_name'  => NULL, 
+		'conf_num'   => NULL,
+		'course_num' => NULL,
 		'check_in'   => NULL,
 		'check_out'  => NULL,
+		'show'       => NULL,
 	];
 
 
@@ -36,14 +39,15 @@ class Admin extends Controller {
 		switch($display) {
 			case "registrations":
 				$this->setSearchFields($request);
+
 				$search              = $this->search;
 				$search["check_in"]  = (!is_null($this->search['check_in']))  ? date("m/d/Y", strtotime($this->search['check_in']))  : NULL;
 				$search["check_out"] = (!is_null($this->search['check_out'])) ? date("m/d/Y", strtotime($this->search['check_out'])) : NULL;
-				$registrations       = $this->getPaginatedRegistrations();
+				$registrations       = $this->getAllRegistrations(TRUE);
 				
 				//check for report run request and send the report
 				if($request->has("btn_report")) {
-					$all_registrations = $this->getAllRegistrations();
+					$all_registrations = $this->getAllRegistrations(FALSE);
 					Mail::to(auth()->user()->email)->send(new RegistrationReportMail($all_registrations, TRUE));
 					session()->flash("status", "A report has been created based off of your search criteria and sent to " . auth()->user()->email);
 				}
@@ -78,16 +82,16 @@ class Admin extends Controller {
 //------------------------------------------------------------------------------
 	
 	// Get All  Registrations ---------------------------------------------------
-	// I hate doubling up methods like this but i could not find a solution for 
-	// Putting a get and a pagination query into one function with the time
-	// limit I have
-	private function getAllRegistrations() {
+	private function getAllRegistrations($paginate) {
 		//Not sure why but the "When" clouser will not accept an Array but it will 
 		//accept an explicit variable.  So broke the proprty into explicit variables.
 		$first_name = $this->search["first_name"];
 		$last_name  = $this->search["last_name"];
+		$conf_num   = $this->search["conf_num"];
+		$course_num = $this->search["course_num"];
 		$check_in   = $this->search["check_in"];
 		$check_out  = $this->search["check_out"];
+		$show       = $this->search["show"];
 
 		$registrations = Registration::when($first_name, function($query, $first_name) {
 			                           	return $query->where('first_name', 'like', '%' . $first_name . '%');
@@ -95,37 +99,11 @@ class Admin extends Controller {
 												->when($last_name, function($query, $last_name) {
 			                           	return $query->where('last_name', 'like', '%' . $last_name . '%');
 												})
-												->when($check_in, function($query, $check_in) {
-			                           	return $query->where('check_in_date', ">=", $check_in);
+												->when($conf_num, function($query, $conf_num) {
+			                           	return $query->where('confirmation_num', 'like', '%' . $conf_num . '%');
 												})
-												->when($check_out, function($query, $check_out) {
-			                           	return $query->where('check_in_date', "<=", $check_out);
-												})
-												->whereNull('canceled_at')
-												->orderBy("check_in_date", "desc")
-												->get()
-												->toArray();
-
-		return $registrations;
-	}
-
-	// Get paginated Registrations ----------------------------------------------
-	// I hate doubling up methods like this but i could not find a solution for 
-	// Putting a get and a pagination query into one function with the time
-	// limit I have
-	private function getPaginatedRegistrations() {
-		//Not sure why but the "When" clouser will not accept an Array but it will 
-		//accept an explicit variable.  So broke the proprty into explicit variables.
-		$first_name = $this->search["first_name"];
-		$last_name  = $this->search["last_name"];
-		$check_in   = $this->search["check_in"];
-		$check_out  = $this->search["check_out"];
-
-		$registrations = Registration::when($first_name, function($query, $first_name) {
-			                           	return $query->where('first_name', 'like', '%' . $first_name . '%');
-												})
-												->when($last_name, function($query, $last_name) {
-			                           	return $query->where('last_name', 'like', '%' . $last_name . '%');
+												->when($course_num, function($query, $course_num) {
+													return $query->where('course_num', 'like', '%' . $course_num . '%');
 												})
 												->when($check_in, function($query, $check_in) {
 			                           	return $query->where('check_in_date', ">=", $check_in);
@@ -133,14 +111,26 @@ class Admin extends Controller {
 												->when($check_out, function($query, $check_out) {
 			                           	return $query->where('check_in_date', "<=", $check_out);
 												})
-												->whereNull('canceled_at')
+												->when($show == "new", function($query) {
+			                           	return $query->whereNull('reported_at');
+												})
+												->when($show == "old", function($query) {
+			                           	return $query->whereNotNull('reported_at');
+												})
+												->when($show == "canceled", function($query) {
+			                           	return $query->whereNotNull('canceled_at');
+												}, function($query) {
+													return $query->whereNull('canceled_at');
+												})												
 												->orderBy("check_in_date", "desc")
-												->paginate(20);
+												->when($paginate, function($query) {
+													return $query->paginate(20);
+												}, function($query) {
+													return $query->get()->toArray();
+												});
 
 		return $registrations;
 	}
-
-
 
 	//Set Search Fields ---------------------------------------------------------
 	private function setSearchFields(Request $request) {
@@ -156,6 +146,18 @@ class Admin extends Controller {
 			$this->search["last_name"]  = (empty($request->search_last_name))  ? NULL : $request->search_last_name;
 		}
 
+		if($request->cn) {
+			$this->search["conf_num"]  = $request->cn;
+		} else {
+			$this->search["conf_num"]  = (empty($request->search_conf_num))  ? NULL : $request->search_conf_num;
+		}
+
+		if($request->cu) {
+			$this->search["course_num"]  = $request->cu;
+		} else {
+			$this->search["course_num"]  = (empty($request->search_course_num))  ? NULL : $request->search_course_num;
+		}
+
 		if($request->ci) {
 			$this->search["check_in"]   = date("Y-m-d H:1:s", $request->ci);
 		} else {
@@ -166,6 +168,12 @@ class Admin extends Controller {
 			$this->search["check_out"]  = date("Y-m-d H:1:s", $request->co);
 		} else {
 			$this->search["check_out"]  = (empty($request->search_check_out))  ? NULL : date("Y-m-d H:1:s", strtotime($request->search_check_out));
+		}
+
+		if($request->sh) {
+			$this->search["show"]       = $request->sh;
+		} else {
+			$this->search["show"]       = (empty($request->show)) ? NULL : $request->show;
 		}
 	}
 

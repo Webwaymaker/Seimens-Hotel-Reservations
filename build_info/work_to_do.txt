@@ -16,8 +16,7 @@
 - After reseting an admin password through the reset email need to redirect      Added: 09/27/2019 11:50 PM
   back to admin/administrators
 - Add meeting background to the site.                                            Added: 09/28/2019 3:15 AM 
-
-- Give the ability to only see non reported registrations in the 
+- Give the ability to only see non reported registrations in the                 Added: 09/30/2019 2:50 AM 
   registrations table
 
 - When sending out custom reports add an email field with themselves 

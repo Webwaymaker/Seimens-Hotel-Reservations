@@ -52,7 +52,7 @@
 				<div class="input-group-prepend">
 					<button id="toggle1" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 				</div>
-				<input id="picker1" class="form-control @error('check_in_date') is-invalid @enderror" type="text" name="check_in_date" value="{{ old('check_in_date', (isset($reg_data->check_in_date)) ? $reg_data->check_in_date : '') }}" placeholder="MM/DD/YYYY">
+				<input id="picker1" class="form-control @error('check_in_date') is-invalid @enderror" type="text" name="check_in_date" value="{{ old('check_in_date', (isset($reg_data->check_in_date)) ? $reg_data->check_in_date : '') }}" placeholder="MM/DD/YYYY" autocomplete="off">
 			</div>
 			@error('check_in_date')<small class="text-danger">{{ $message }}</small>@enderror
 		</td>
@@ -64,7 +64,7 @@
 				<div class="input-group-prepend">
 					<button id="toggle2" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 				</div>
-				<input id="picker2" class="form-control @error('check_out_date') is-invalid @enderror" type="text" name="check_out_date" value="{{ old('check_out_date', (isset($reg_data->check_out_date)) ? $reg_data->check_out_date : '') }}" placeholder="MM/DD/YYYY">
+				<input id="picker2" class="form-control @error('check_out_date') is-invalid @enderror" type="text" name="check_out_date" value="{{ old('check_out_date', (isset($reg_data->check_out_date)) ? $reg_data->check_out_date : '') }}" placeholder="MM/DD/YYYY" autocomplete="off">
 			</div>
 			@error('check_out_date')<small class="text-danger">{{ $message }}</small>@enderror
 		</td>

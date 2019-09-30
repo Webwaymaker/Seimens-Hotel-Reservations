@@ -68,7 +68,7 @@
 							<tr>
 								<td class="text-right" colspan="2">
 									<button class="btn btn-primary" type="submit">Access</button>
-									<a class="btn-secondary" href="/">Back</a>
+									<a class="btn btn-secondary" href="/">Back</a>
 								</td>
 							</tr>
 						</table>

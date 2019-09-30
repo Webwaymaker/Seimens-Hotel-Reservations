@@ -59,7 +59,7 @@
 						<div class="input-group-prepend">
 							<button id="toggle1" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
-						<input id="picker1" class="form-control @error('activate_date') is-invalid @enderror" type="text" name="activate_date" value="{{ old("activate_date") }}" placeholder="Activation Date (MM/DD/YYYY)">
+						<input id="picker1" class="form-control @error('activate_date') is-invalid @enderror" type="text" name="activate_date" value="{{ old("activate_date") }}" placeholder="Activation Date (MM/DD/YYYY)" autocomplete="off">
 					</div>
 					@error('activate_date')
 						<small class="text-danger">{{ $message }}</small>
@@ -71,7 +71,7 @@
 						<div class="input-group-prepend">
 							<button id="toggle2" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
-						<input id="picker2" class="form-control @error('start_date') is-invalid @enderror" type="text" name="start_date" value="{{ old("start_date") }}" placeholder="Start Date (MM/DD/YYYY)">
+						<input id="picker2" class="form-control @error('start_date') is-invalid @enderror" type="text" name="start_date" value="{{ old("start_date") }}" placeholder="Start Date (MM/DD/YYYY)" autocomplete="off">
 					</div>
 					@error('start_date')
 						<small class="text-danger">{{ $message }}</small>
@@ -83,7 +83,7 @@
 						<div class="input-group-prepend">
 							<button id="toggle3" class="btn btn-primary" type="button"><i class="fa fa-calendar-day"></i></button>
 						</div>
-						<input id="picker3" class="form-control @error('end_date') is-invalid @enderror" type="text" name="end_date" value="{{ old("end_date") }}" placeholder="End Date (MM/DD/YYYY)">
+						<input id="picker3" class="form-control @error('end_date') is-invalid @enderror" type="text" name="end_date" value="{{ old("end_date") }}" placeholder="End Date (MM/DD/YYYY)" autocomplete="off">
 					</div>
 					@error('end_date')
 						<small class="text-danger">{{ $message }}</small>

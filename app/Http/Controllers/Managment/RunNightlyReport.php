@@ -15,7 +15,7 @@ class RunNightlyReport {
 		if($this->authorizedUser()) {
 			$exit_code = Artisan::call('command:RunRegistrationReport');
 			echo date("Y-m-d H:i:s") . " - The Nightly Registration Report has 
-			     completed and been sent to all Report-Tos <br />"; 
+			   completed and been sent to all Report-Tos <br />"; 
 		}
 	}
 
